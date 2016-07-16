@@ -11,11 +11,13 @@ import Foundation
 
 
 class InterfaceController: WKInterfaceController {
-
+    
+    @IBOutlet var table: WKInterfaceTable!
+    
     override func awake(withContext context: AnyObject?) {
         super.awake(withContext: context)
         
-        // Configure interface objects here.
+        loadTable()
     }
     
     override func willActivate() {
@@ -26,6 +28,14 @@ class InterfaceController: WKInterfaceController {
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
+    }
+    
+    private func loadTable() {
+        table.setNumberOfRows(3, withRowType: "MessageListRow")
+    }
+    
+    override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
+        super.table(table, didSelectRowAt: rowIndex)
     }
 
 }
