@@ -13,6 +13,10 @@ class ChatTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(FriendTableViewController.didRefresh(_:)), for: .valueChanged)
+        self.refreshControl = refreshControl
         
         NotificationCenter.default.addObserver(forName: UserManager.Notif.didLogout, object: nil, queue: OperationQueue.main) { [weak self] (notif) in
             self?.fetch()
@@ -57,6 +61,13 @@ class ChatTableViewController: UITableViewController {
             }
             self?.tableView.reloadData()
         })
+    }
+    
+    
+    // MARK:- Target-Action
+    func didRefresh(_ sender: UIRefreshControl) {
+        sender.endRefreshing()
+        fetch()
     }
     
     deinit {

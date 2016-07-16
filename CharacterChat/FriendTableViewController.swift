@@ -25,8 +25,17 @@ class FriendTableViewController: UITableViewController {
         }
         
         fetch()
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(FriendTableViewController.didRefresh(_:)), for: .valueChanged)
+        self.refreshControl = refreshControl
     }
 
+    func didRefresh(_ sender: UIRefreshControl) {
+        sender.endRefreshing()
+        fetch()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
