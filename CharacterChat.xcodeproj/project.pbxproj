@@ -24,6 +24,7 @@
 		2BEAD88E1D3A2FFA00CEC543 /* FriendRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAD88D1D3A2FFA00CEC543 /* FriendRegistrationViewController.swift */; };
 		2BEAD8901D3A32F300CEC543 /* FriendRegistrationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAD88F1D3A32F300CEC543 /* FriendRegistrationTableViewCell.swift */; };
 		2BEAD8921D3A343300CEC543 /* UserLookupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAD8911D3A343300CEC543 /* UserLookupService.swift */; };
+		2BEAD8941D3A46F600CEC543 /* ImageLoadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAD8931D3A46F600CEC543 /* ImageLoadManager.swift */; };
 		805ACA321D39B73300B76443 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805ACA311D39B73300B76443 /* AppDelegate.swift */; };
 		805ACA341D39B73300B76443 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805ACA331D39B73300B76443 /* ViewController.swift */; };
 		805ACA371D39B73300B76443 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 805ACA351D39B73300B76443 /* Main.storyboard */; };
@@ -115,6 +116,7 @@
 		2BEAD88D1D3A2FFA00CEC543 /* FriendRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendRegistrationViewController.swift; sourceTree = "<group>"; };
 		2BEAD88F1D3A32F300CEC543 /* FriendRegistrationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendRegistrationTableViewCell.swift; sourceTree = "<group>"; };
 		2BEAD8911D3A343300CEC543 /* UserLookupService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLookupService.swift; sourceTree = "<group>"; };
+		2BEAD8931D3A46F600CEC543 /* ImageLoadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoadManager.swift; sourceTree = "<group>"; };
 		805ACA2E1D39B73300B76443 /* CharacterChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CharacterChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		805ACA311D39B73300B76443 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		805ACA331D39B73300B76443 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -182,8 +184,16 @@
 				2BEAD8871D3A21A700CEC543 /* UserManager.swift */,
 				2BEAD88B1D3A274000CEC543 /* Result.swift */,
 				2BEAD8911D3A343300CEC543 /* UserLookupService.swift */,
+				2BEAD8931D3A46F600CEC543 /* ImageLoadManager.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		2BEAD8951D3A4A4100CEC543 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 		805ACA251D39B73300B76443 = {
@@ -213,6 +223,7 @@
 		805ACA301D39B73300B76443 /* CharacterChat */ = {
 			isa = PBXGroup;
 			children = (
+				2BEAD8951D3A4A4100CEC543 /* Extension */,
 				2BEAD8801D3A213500CEC543 /* Model */,
 				805ACA311D39B73300B76443 /* AppDelegate.swift */,
 				805ACA331D39B73300B76443 /* ViewController.swift */,
@@ -493,6 +504,7 @@
 			files = (
 				2BEAD8901D3A32F300CEC543 /* FriendRegistrationTableViewCell.swift in Sources */,
 				2BEAD8921D3A343300CEC543 /* UserLookupService.swift in Sources */,
+				2BEAD8941D3A46F600CEC543 /* ImageLoadManager.swift in Sources */,
 				2BC0C5771D39D90C00396CC3 /* ChatDetailContainerViewController.swift in Sources */,
 				805ACA341D39B73300B76443 /* ViewController.swift in Sources */,
 				2BC0C56F1D39CE3500396CC3 /* FriendTableViewController.swift in Sources */,

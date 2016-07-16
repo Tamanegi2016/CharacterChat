@@ -45,8 +45,20 @@ class ChatTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatTableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatTableViewCell", for: indexPath) as! ChatTableViewCell
 
+        let imageId = chats[indexPath.row].friend.profileImage.absoluteString
+        cell.imageIdentifier = imageId
+        ImageLoadManager.sharedInstance.load(with: chats[indexPath.row].friend.profileImage) { (result) in
+            if let imageIdentifier = cell.imageIdentifier where imageIdentifier == imageId {
+                switch result {
+                case .success(let data):
+                    cell.imageView?.image = UIImage(data: data)
+                case .failure(_):
+                    break
+                }
+            }
+        }
 
         return cell
     }

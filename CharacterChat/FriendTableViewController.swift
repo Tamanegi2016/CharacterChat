@@ -59,6 +59,18 @@ class FriendTableViewController: UITableViewController, FriendRegistrationViewCo
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendTableViewCell", for: indexPath) as! FriendTableViewCell
         cell.nameLabel.text = friends[indexPath.row].name
+        let imageId = friends[indexPath.row].profileImage.absoluteString
+        cell.imageIdentifier = imageId
+        ImageLoadManager.sharedInstance.load(with: friends[indexPath.row].profileImage) { (result) in
+            if let imageIdentifier = cell.imageIdentifier where imageIdentifier == imageId {
+                switch result {
+                case .success(let data):
+                    cell.imageView?.image = UIImage(data: data)
+                case .failure(_):
+                    break
+                }
+            }
+        }
         return cell
     }
 

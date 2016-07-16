@@ -13,6 +13,7 @@ class FriendRegistrationTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
+    var imageIdentifier: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()

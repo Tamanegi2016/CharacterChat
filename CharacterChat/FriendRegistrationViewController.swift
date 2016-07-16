@@ -75,6 +75,18 @@ class FriendRegistrationViewController: UITableViewController, UISearchResultsUp
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendRegistrationTableViewCell", for: indexPath) as! FriendRegistrationTableViewCell
         cell.nameLabel.text = people[indexPath.row].name
+        let imageId = people[indexPath.row].profileImage.absoluteString
+        cell.imageIdentifier = imageId
+        ImageLoadManager.sharedInstance.load(with: people[indexPath.row].profileImage) { (result) in
+            if let imageIdentifier = cell.imageIdentifier where imageIdentifier == imageId {
+                switch result {
+                case .success(let data):
+                    cell.imageView?.image = UIImage(data: data)
+                case .failure(_):
+                    break
+                }
+            }
+        }
         return cell
     }
     

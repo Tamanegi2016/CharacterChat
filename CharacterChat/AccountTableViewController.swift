@@ -21,6 +21,15 @@ class AccountTableViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         nameLabel.text = UserManager.sharedInstance.own?.name
+
+        ImageLoadManager.sharedInstance.load(with: UserManager.sharedInstance.own?.profileImage) { [weak self] (result) in
+            switch result {
+            case .success(let data):
+                self?.profileImageView?.image = UIImage(data: data)
+            case .failure(_):
+                break
+            }
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(AccountTableViewController.keyboardDidShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AccountTableViewController.keyboardDidHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
