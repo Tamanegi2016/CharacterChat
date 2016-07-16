@@ -61,7 +61,6 @@ class TalkInterfaceController: WKInterfaceController, AVSpeechSynthesizerDelegat
         utterance.volume = 1
         synthesizer.speak(utterance)
     }
-    
     private func presentMessage() {
         guard let sceneRoot = interfaceScene.scene?.rootNode, object = sceneRoot.childNode(withName:"teapot", recursively:true) else { return }
         
