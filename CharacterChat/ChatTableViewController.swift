@@ -13,7 +13,7 @@ class ChatTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(FriendTableViewController.didRefresh(_:)), for: .valueChanged)
         self.refreshControl = refreshControl
