@@ -501,12 +501,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="フレンド" id="OOh-dn-bWa">
-                        <barButtonItem key="leftBarButtonItem" title="友達登録" id="KD4-yf-xW7">
+                        <barButtonItem key="leftBarButtonItem" image="AddUser" id="KD4-yf-xW7">
                             <connections>
                                 <segue destination="mZF-yh-NYw" kind="presentation" id="sWB-mK-bQq"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="アカウント" id="PZb-zw-2dU">
+                        <barButtonItem key="rightBarButtonItem" image="Login" id="PZb-zw-2dU">
                             <connections>
                                 <segue destination="hxO-8n-r1F" kind="presentation" id="QF7-PM-s2G"/>
                             </connections>
@@ -574,8 +574,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AddUser" width="25" height="25"/>
         <image name="ChatTab" width="25" height="25"/>
         <image name="FriendTab" width="25" height="25"/>
+        <image name="Login" width="25" height="25"/>
         <image name="MessageBubbleLeft" width="43" height="46"/>
         <image name="MessageBubbleRight" width="43" height="47"/>
         <image name="NoProfile" width="48" height="48"/>

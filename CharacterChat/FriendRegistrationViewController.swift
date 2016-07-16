@@ -27,6 +27,16 @@ class FriendRegistrationViewController: UITableViewController, UISearchResultsUp
         
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
+        
+        service.fetch { [weak self] (result) in
+            switch result {
+            case .success(let users):
+                self?.people = users
+                self?.tableView.reloadData()
+            case .failure(_):
+                break
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,7 +46,7 @@ class FriendRegistrationViewController: UITableViewController, UISearchResultsUp
     // MARK:- UISearchResultsUpdating
     func updateSearchResults(for searchController: UISearchController) {
         service = UserLookupService()
-        service.fetch(with: searchController.searchBar.text) { [weak self] (result) in
+        service.fetch(with: searchController.searchBar.text ?? "") { [weak self] (result) in
             switch result {
             case .success(let users):
                 self?.people = users
@@ -64,6 +74,7 @@ class FriendRegistrationViewController: UITableViewController, UISearchResultsUp
     
     // MARK:- UITableViewDataSource
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let alertController = UIAlertController(title: "確認", message: "フレンド登録しますか？", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: { _ in }))
         alertController.addAction(UIAlertAction(title: "登録", style: .default, handler: { _ in }))
