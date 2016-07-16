@@ -62,5 +62,24 @@
             </objects>
             <point key="canvasLocation" x="468" y="643"/>
         </scene>
+        <!--TalkInterfaceController-->
+        <scene sceneID="q2X-Jo-fhN">
+            <objects>
+                <controller identifier="TalkInterfaceController" id="6Kp-Xr-ksS" customClass="TalkInterfaceController" customModule="CharacterChat_WatchKit_Extension">
+                    <items>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="話す" id="ai6-jY-4Bl">
+                            <connections>
+                                <action selector="didTappedTalkButton" destination="6Kp-Xr-ksS" id="AbE-1M-P22"/>
+                            </connections>
+                        </button>
+                        <sceneKitScene alignment="left" scene="art.scnassets/sample.scn" id="mda-Fm-Eag"/>
+                    </items>
+                    <connections>
+                        <outlet property="interfaceScene" destination="mda-Fm-Eag" id="LGr-WC-sfG"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="444" y="345"/>
+        </scene>
     </scenes>
 </document>

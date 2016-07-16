@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8036D4F61D3A0ECB0017C990 /* TalkInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8036D4F51D3A0ECB0017C990 /* TalkInterfaceController.swift */; };
+		8036D4F81D3A0F0B0017C990 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 8036D4F71D3A0F0B0017C990 /* art.scnassets */; };
 		805ACA321D39B73300B76443 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805ACA311D39B73300B76443 /* AppDelegate.swift */; };
 		805ACA341D39B73300B76443 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805ACA331D39B73300B76443 /* ViewController.swift */; };
 		805ACA371D39B73300B76443 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 805ACA351D39B73300B76443 /* Main.storyboard */; };
@@ -82,6 +84,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8036D4F51D3A0ECB0017C990 /* TalkInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TalkInterfaceController.swift; sourceTree = "<group>"; };
+		8036D4F71D3A0F0B0017C990 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		805ACA2E1D39B73300B76443 /* CharacterChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CharacterChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		805ACA311D39B73300B76443 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		805ACA331D39B73300B76443 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +145,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8036D4F41D3A0EBE0017C990 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8036D4F51D3A0ECB0017C990 /* TalkInterfaceController.swift */,
+				805ACA6C1D39B73300B76443 /* InterfaceController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		805ACA251D39B73300B76443 = {
 			isa = PBXGroup;
 			children = (
@@ -209,11 +222,12 @@
 		805ACA691D39B73300B76443 /* CharacterChat WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				8036D4F41D3A0EBE0017C990 /* Controller */,
 				805ACA881D39BA3200B76443 /* View */,
-				805ACA6C1D39B73300B76443 /* InterfaceController.swift */,
 				805ACA6E1D39B73300B76443 /* ExtensionDelegate.swift */,
 				805ACA701D39B73300B76443 /* NotificationController.swift */,
 				805ACA721D39B73300B76443 /* Assets.xcassets */,
+				8036D4F71D3A0F0B0017C990 /* art.scnassets */,
 				805ACA741D39B73300B76443 /* Info.plist */,
 				805ACA6A1D39B73300B76443 /* Supporting Files */,
 			);
@@ -441,6 +455,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				805ACA731D39B73300B76443 /* Assets.xcassets in Resources */,
+				8036D4F81D3A0F0B0017C990 /* art.scnassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +491,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8036D4F61D3A0ECB0017C990 /* TalkInterfaceController.swift in Sources */,
 				805ACA8B1D39BA6B00B76443 /* MessageListRow.swift in Sources */,
 				805ACA711D39B73300B76443 /* NotificationController.swift in Sources */,
 				805ACA6F1D39B73300B76443 /* ExtensionDelegate.swift in Sources */,
@@ -782,6 +798,7 @@
 				805ACA791D39B73300B76443 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		805ACA7B1D39B73300B76443 /* Build configuration list for PBXNativeTarget "CharacterChat WatchKit App" */ = {
 			isa = XCConfigurationList;
@@ -790,6 +807,7 @@
 				805ACA7D1D39B73300B76443 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		805ACA7F1D39B73300B76443 /* Build configuration list for PBXNativeTarget "CharacterChat" */ = {
 			isa = XCConfigurationList;
@@ -798,6 +816,7 @@
 				805ACA811D39B73300B76443 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		805ACA821D39B73300B76443 /* Build configuration list for PBXNativeTarget "CharacterChatTests" */ = {
 			isa = XCConfigurationList;
@@ -806,6 +825,7 @@
 				805ACA841D39B73300B76443 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		805ACA851D39B73300B76443 /* Build configuration list for PBXNativeTarget "CharacterChatUITests" */ = {
 			isa = XCConfigurationList;
@@ -814,6 +834,7 @@
 				805ACA871D39B73300B76443 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -9,7 +9,5 @@
 import WatchKit
 
 class MessageListRow: NSObject {
-
-    @IBOutlet var messageLabel: WKInterfaceLabel!
     
 }
