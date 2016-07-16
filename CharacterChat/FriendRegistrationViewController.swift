@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol FriendRegistrationViewControllerDelegate: class {
+    func viewController(vc: FriendRegistrationViewController, didRegister user: User)
+}
+
 class FriendRegistrationViewController: UITableViewController, UISearchResultsUpdating {
     
     lazy var searchController: UISearchController = {
@@ -17,6 +21,8 @@ class FriendRegistrationViewController: UITableViewController, UISearchResultsUp
         searchController.dimsBackgroundDuringPresentation = false
         return searchController
     }()
+    
+    weak var delegate: FriendRegistrationViewControllerDelegate?
     
     var people = [User]()
     
@@ -77,7 +83,10 @@ class FriendRegistrationViewController: UITableViewController, UISearchResultsUp
         tableView.deselectRow(at: indexPath, animated: true)
         let alertController = UIAlertController(title: "確認", message: "フレンド登録しますか？", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: { _ in }))
-        alertController.addAction(UIAlertAction(title: "登録", style: .default, handler: { _ in }))
+        alertController.addAction(UIAlertAction(title: "登録", style: .default, handler: { [weak self] (action) in
+            guard let weakSelf = self else { return }
+            weakSelf.delegate?.viewController(vc: weakSelf, didRegister: weakSelf.people[indexPath.row])
+        }))
         present(alertController, animated: true, completion: nil)
     }
 }

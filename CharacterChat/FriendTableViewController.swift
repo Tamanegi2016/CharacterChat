@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FriendTableViewController: UITableViewController {
+class FriendTableViewController: UITableViewController, FriendRegistrationViewControllerDelegate {
 
     var friends = [User]()
     
@@ -40,6 +40,12 @@ class FriendTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? FriendRegistrationViewController {
+            vc.delegate = self
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -56,9 +62,14 @@ class FriendTableViewController: UITableViewController {
         return cell
     }
 
-
+    // MARK:- Segue
     @IBAction func unwind(segue: UIStoryboardSegue) {
         
+    }
+    
+    // MARK:- FriendRegistrationViewControllerDelegate
+    func viewController(vc: FriendRegistrationViewController, didRegister user: User) {
+        // TODO: - 登録処理
     }
     
     private func fetch() {
