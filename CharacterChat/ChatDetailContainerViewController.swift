@@ -27,6 +27,8 @@ class ChatDetailContainerViewController: UIViewController, UITextViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(ChatDetailContainerViewController.keyboardDidHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ChatDetailContainerViewController.keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ChatDetailContainerViewController.didTapView(_:)))
+        view.addGestureRecognizer(tapGesture)
     }
 
     override func viewWillLayoutSubviews() {
@@ -48,6 +50,7 @@ class ChatDetailContainerViewController: UIViewController, UITextViewDelegate {
     
     enum KeyboardState {
         case showed
+        case willHide
         case hidden
     }
     
@@ -59,10 +62,10 @@ class ChatDetailContainerViewController: UIViewController, UITextViewDelegate {
             curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? CGFloat {
     
             switch keyboardState {
-            case .hidden:
+            case .hidden, .showed:
                 inputContainerViewBottomConstraint.constant = value.cgRectValue().height - bottomLayoutGuide.length
                 tableContainerViewBottomConstraint.constant = value.cgRectValue().height - inputContainerView.frame.height
-            case .showed:
+            case .willHide:
                 inputContainerViewBottomConstraint.constant = 0
                 tableContainerViewBottomConstraint.constant = inputContainerView.frame.height
             }
@@ -91,12 +94,20 @@ class ChatDetailContainerViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func didTapSendButton(_ sender: UIButton) {
+        keyboardState = .willHide
         inputTextView.resignFirstResponder()
         
     }
     
     func textViewDidChange(_ textView: UITextView) {
         inputTextViewHeightConstaraint.constant = min(78, textView.contentSize.height)
+    }
+    
+    func didTapView(_ gesture: UITapGestureRecognizer) {
+        if keyboardState == .showed {
+            keyboardState = .willHide
+            inputTextView.resignFirstResponder()
+        }
     }
     
     deinit {
