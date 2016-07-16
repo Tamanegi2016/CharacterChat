@@ -23,11 +23,9 @@ class ChatDetailContainerViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default().addObserver(self, selector: #selector(ChatDetailContainerViewController.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default().addObserver(self, selector: #selector(ChatDetailContainerViewController.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        NotificationCenter.default().addObserver(self, selector: #selector(ChatDetailContainerViewController.keyboardDidShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-        NotificationCenter.default().addObserver(self, selector: #selector(ChatDetailContainerViewController.keyboardDidHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
-        NotificationCenter.default().addObserver(self, selector: #selector(ChatDetailContainerViewController.keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatDetailContainerViewController.keyboardDidShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatDetailContainerViewController.keyboardDidHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatDetailContainerViewController.keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         
     }
 
@@ -54,12 +52,6 @@ class ChatDetailContainerViewController: UIViewController, UITextViewDelegate {
     }
     
     var keyboardState: KeyboardState = .hidden
-    
-    func keyboardWillShow(notification: Notification) {
-    }
-    
-    func keyboardWillHide(notification: Notification) {
-    }
     
     func keyboardWillChange(notification: Notification) {
         if let value = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue,
@@ -107,4 +99,9 @@ class ChatDetailContainerViewController: UIViewController, UITextViewDelegate {
         inputTextViewHeightConstaraint.constant = min(78, textView.contentSize.height)
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+    }
 }

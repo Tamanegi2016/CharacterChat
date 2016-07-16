@@ -20,9 +20,9 @@ class AccountTableViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default().addObserver(self, selector: #selector(AccountTableViewController.keyboardDidShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-        NotificationCenter.default().addObserver(self, selector: #selector(AccountTableViewController.keyboardDidHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
-        NotificationCenter.default().addObserver(self, selector: #selector(AccountTableViewController.keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AccountTableViewController.keyboardDidShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AccountTableViewController.keyboardDidHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AccountTableViewController.keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,12 +41,6 @@ class AccountTableViewController: UIViewController, UITextFieldDelegate {
     }
     
     var keyboardState: KeyboardState = .hidden
-    
-    func keyboardWillShow(notification: Notification) {
-    }
-    
-    func keyboardWillHide(notification: Notification) {
-    }
     
     func keyboardWillChange(notification: Notification) {
         if let value = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue,
@@ -93,5 +87,9 @@ class AccountTableViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+    }
 }
