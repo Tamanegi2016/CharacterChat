@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B7AC5B91D39C99100FFBFC9 /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7AC5B81D39C99100FFBFC9 /* ChatTableViewController.swift */; };
+		2B7AC5BD1D39CBA100FFBFC9 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7AC5BC1D39CBA100FFBFC9 /* ChatTableViewCell.swift */; };
+		2BA9627B1D3A03C1009EDD5F /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA9627A1D3A03C1009EDD5F /* AccountTableViewController.swift */; };
+		2BC0C56F1D39CE3500396CC3 /* FriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC0C56E1D39CE3500396CC3 /* FriendTableViewController.swift */; };
+		2BC0C5711D39CE4400396CC3 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC0C5701D39CE4400396CC3 /* FriendTableViewCell.swift */; };
+		2BC0C5731D39D3A600396CC3 /* ChatDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC0C5721D39D3A600396CC3 /* ChatDetailTableViewController.swift */; };
+		2BC0C5751D39D3BB00396CC3 /* ChatDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC0C5741D39D3BB00396CC3 /* ChatDetailTableViewCell.swift */; };
+		2BC0C5771D39D90C00396CC3 /* ChatDetailContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC0C5761D39D90C00396CC3 /* ChatDetailContainerViewController.swift */; };
+		2BC0C5791D39E01300396CC3 /* ChatDetailTableRightViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC0C5781D39E01300396CC3 /* ChatDetailTableRightViewCell.swift */; };
 		805ACA321D39B73300B76443 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805ACA311D39B73300B76443 /* AppDelegate.swift */; };
 		805ACA341D39B73300B76443 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805ACA331D39B73300B76443 /* ViewController.swift */; };
 		805ACA371D39B73300B76443 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 805ACA351D39B73300B76443 /* Main.storyboard */; };
@@ -81,6 +90,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2B7AC5B81D39C99100FFBFC9 /* ChatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
+		2B7AC5BC1D39CBA100FFBFC9 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		2BA9627A1D3A03C1009EDD5F /* AccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
+		2BC0C56E1D39CE3500396CC3 /* FriendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewController.swift; sourceTree = "<group>"; };
+		2BC0C5701D39CE4400396CC3 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
+		2BC0C5721D39D3A600396CC3 /* ChatDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDetailTableViewController.swift; sourceTree = "<group>"; };
+		2BC0C5741D39D3BB00396CC3 /* ChatDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDetailTableViewCell.swift; sourceTree = "<group>"; };
+		2BC0C5761D39D90C00396CC3 /* ChatDetailContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDetailContainerViewController.swift; sourceTree = "<group>"; };
+		2BC0C5781D39E01300396CC3 /* ChatDetailTableRightViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatDetailTableRightViewCell.swift; path = ../ChatDetailTableRightViewCell.swift; sourceTree = "<group>"; };
 		805ACA2E1D39B73300B76443 /* CharacterChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CharacterChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		805ACA311D39B73300B76443 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		805ACA331D39B73300B76443 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -168,7 +186,16 @@
 			children = (
 				805ACA311D39B73300B76443 /* AppDelegate.swift */,
 				805ACA331D39B73300B76443 /* ViewController.swift */,
+				2BC0C56E1D39CE3500396CC3 /* FriendTableViewController.swift */,
+				2BC0C5701D39CE4400396CC3 /* FriendTableViewCell.swift */,
 				805ACA351D39B73300B76443 /* Main.storyboard */,
+				2BA9627A1D3A03C1009EDD5F /* AccountTableViewController.swift */,
+				2B7AC5B81D39C99100FFBFC9 /* ChatTableViewController.swift */,
+				2B7AC5BC1D39CBA100FFBFC9 /* ChatTableViewCell.swift */,
+				2BC0C5761D39D90C00396CC3 /* ChatDetailContainerViewController.swift */,
+				2BC0C5721D39D3A600396CC3 /* ChatDetailTableViewController.swift */,
+				2BC0C5741D39D3BB00396CC3 /* ChatDetailTableViewCell.swift */,
+				2BC0C5781D39E01300396CC3 /* ChatDetailTableRightViewCell.swift */,
 				805ACA381D39B73300B76443 /* Assets.xcassets */,
 				805ACA3A1D39B73300B76443 /* LaunchScreen.storyboard */,
 				805ACA3D1D39B73300B76443 /* Info.plist */,
@@ -432,8 +459,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BC0C5771D39D90C00396CC3 /* ChatDetailContainerViewController.swift in Sources */,
 				805ACA341D39B73300B76443 /* ViewController.swift in Sources */,
+				2BC0C56F1D39CE3500396CC3 /* FriendTableViewController.swift in Sources */,
+				2BA9627B1D3A03C1009EDD5F /* AccountTableViewController.swift in Sources */,
+				2BC0C5731D39D3A600396CC3 /* ChatDetailTableViewController.swift in Sources */,
+				2B7AC5B91D39C99100FFBFC9 /* ChatTableViewController.swift in Sources */,
+				2BC0C5711D39CE4400396CC3 /* FriendTableViewCell.swift in Sources */,
 				805ACA321D39B73300B76443 /* AppDelegate.swift in Sources */,
+				2BC0C5791D39E01300396CC3 /* ChatDetailTableRightViewCell.swift in Sources */,
+				2BC0C5751D39D3BB00396CC3 /* ChatDetailTableViewCell.swift in Sources */,
+				2B7AC5BD1D39CBA100FFBFC9 /* ChatTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -762,6 +798,7 @@
 				805ACA791D39B73300B76443 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		805ACA7B1D39B73300B76443 /* Build configuration list for PBXNativeTarget "CharacterChat WatchKit App" */ = {
 			isa = XCConfigurationList;
@@ -770,6 +807,7 @@
 				805ACA7D1D39B73300B76443 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		805ACA7F1D39B73300B76443 /* Build configuration list for PBXNativeTarget "CharacterChat" */ = {
 			isa = XCConfigurationList;
@@ -778,6 +816,7 @@
 				805ACA811D39B73300B76443 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		805ACA821D39B73300B76443 /* Build configuration list for PBXNativeTarget "CharacterChatTests" */ = {
 			isa = XCConfigurationList;
@@ -786,6 +825,7 @@
 				805ACA841D39B73300B76443 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		805ACA851D39B73300B76443 /* Build configuration list for PBXNativeTarget "CharacterChatUITests" */ = {
 			isa = XCConfigurationList;
@@ -794,6 +834,7 @@
 				805ACA871D39B73300B76443 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
