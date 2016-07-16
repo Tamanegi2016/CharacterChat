@@ -103,5 +103,8 @@ class ChatDetailContainerViewController: UIViewController, UITextViewDelegate {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidHide, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        
+        NotificationCenter.default.removeObserver(self, name: UserManager.Notif.didLogout, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UserManager.Notif.didLogin, object: nil)
     }
 }

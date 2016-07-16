@@ -20,9 +20,23 @@ class AccountTableViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        nameLabel.text = UserManager.sharedInstance.own?.name
+        
         NotificationCenter.default.addObserver(self, selector: #selector(AccountTableViewController.keyboardDidShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AccountTableViewController.keyboardDidHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AccountTableViewController.keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        
+        NotificationCenter.default.addObserver(forName: UserManager.Notif.didLogout, object: nil, queue: OperationQueue.main) { [weak self] (notif) in
+            self?.nameLabel.text = "ゲスト"
+            self?.profileImageView?.image = UIImage(named: "NoProfile")
+        }
+        
+        NotificationCenter.default.addObserver(forName: UserManager.Notif.didLogin, object: nil, queue: OperationQueue.main) { [weak self] (notif) in
+            self?.nameLabel.text = UserManager.sharedInstance.own?.name
+            self?.nameLabel.text = "ゲスト"
+            self?.profileImageView?.image = UIImage(named: "NoProfile")
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -91,5 +105,8 @@ class AccountTableViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidHide, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        
+        NotificationCenter.default.removeObserver(self, name: UserManager.Notif.didLogout, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UserManager.Notif.didLogin, object: nil)
     }
 }

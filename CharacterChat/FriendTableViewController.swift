@@ -10,14 +10,21 @@ import UIKit
 
 class FriendTableViewController: UITableViewController {
 
+    var friends = [User]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        NotificationCenter.default.addObserver(forName: UserManager.Notif.didLogout, object: nil, queue: OperationQueue.main) { [weak self] (notif) in
+            self?.fetch()
+        }
+        
+        NotificationCenter.default.addObserver(forName: UserManager.Notif.didLogin, object: nil, queue: OperationQueue.main) { [weak self] (notif) in
+            self?.friends = []
+            self?.tableView.reloadData()
+        }
+        
+        fetch()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,16 +38,34 @@ class FriendTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return friends.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendTableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendTableViewCell", for: indexPath) as! FriendTableViewCell
+        cell.nameLabel.text = friends[indexPath.row].name
         return cell
     }
 
 
     @IBAction func unwind(segue: UIStoryboardSegue) {
         
+    }
+    
+    private func fetch() {
+        UserManager.sharedInstance.requestFriends(complate: { [weak self] (result) in
+            switch result {
+            case .success(let data):
+                self?.friends = data
+            case .failure(_):
+                self?.friends = []
+            }
+            self?.tableView.reloadData()
+        })
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UserManager.Notif.didLogout, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UserManager.Notif.didLogin, object: nil)
     }
 }
