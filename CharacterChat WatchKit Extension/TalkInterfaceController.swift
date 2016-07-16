@@ -8,6 +8,7 @@
 
 import WatchKit
 import Foundation
+import AVFoundation
 
 class TalkInterfaceController: WKInterfaceController {
     
@@ -30,18 +31,11 @@ class TalkInterfaceController: WKInterfaceController {
     }
     
     private func setup() {
-        
+        guard let sceneRoot = interfaceScene.scene?.rootNode else { return }
     }
     
     private func run() {
-        guard let sceneRoot = interfaceScene.scene?.rootNode else { return }
-        if let soundSource = SCNAudioSource(named: "art.scnassets/amuro.mp3") {
-            let sequece = SCNAction.sequence([
-                SCNAction.wait(forDuration: 1.0),
-                SCNAction.play(soundSource, waitForCompletion: false)
-                ])
-            sceneRoot.run(sequece)
-        }
+        speech(message: "こんにちは。元気ですか？")
     }
     
     @IBAction func didTappedTalkButton() {
@@ -52,14 +46,23 @@ class TalkInterfaceController: WKInterfaceController {
         }
     }
     
-    private func presentConfirmAlert(with title: String?, message: String?) {
-        let confirmAction = WKAlertAction(title: "OK", style: .default) {
-        }
-        presentAlert(withTitle: title, message: message, preferredStyle: .alert, actions: [confirmAction])
-    }
+//    private func presentConfirmAlert(with title: String?, message: String?) {
+//        let confirmAction = WKAlertAction(title: "OK", style: .default) {
+//        }
+//        presentAlert(withTitle: title, message: message, preferredStyle: .alert, actions: [confirmAction])
+//    }
     
     private func send(to user: String, message: String) {
-        presentConfirmAlert(with: nil, message: message)
+        speech(message: message)
+    }
+    
+    private func speech(message: String) {
+        let synthesizer = AVSpeechSynthesizer()
+        let utterance =  AVSpeechUtterance(string: message)
+        utterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
+        utterance.rate = 0.55
+        utterance.volume = 1
+        synthesizer.speak(utterance)
     }
     
 }
