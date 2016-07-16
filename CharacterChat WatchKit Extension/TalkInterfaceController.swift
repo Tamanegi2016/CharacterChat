@@ -8,11 +8,14 @@
 
 import WatchKit
 import Foundation
+import SpriteKit
+import SceneKit
 import AVFoundation
 
-class TalkInterfaceController: WKInterfaceController {
+class TalkInterfaceController: WKInterfaceController, AVSpeechSynthesizerDelegate {
     
     @IBOutlet var interfaceScene: WKInterfaceSCNScene!
+    
     
     override func awake(withContext context: AnyObject?) {
         super.awake(withContext: context)
@@ -31,11 +34,10 @@ class TalkInterfaceController: WKInterfaceController {
     }
     
     private func setup() {
-        guard let sceneRoot = interfaceScene.scene?.rootNode else { return }
     }
     
     private func run() {
-        speech(message: "こんにちは。元気ですか？")
+        speech(message: "こんにちは!")
     }
     
     @IBAction func didTappedTalkButton() {
@@ -46,23 +48,55 @@ class TalkInterfaceController: WKInterfaceController {
         }
     }
     
-//    private func presentConfirmAlert(with title: String?, message: String?) {
-//        let confirmAction = WKAlertAction(title: "OK", style: .default) {
-//        }
-//        presentAlert(withTitle: title, message: message, preferredStyle: .alert, actions: [confirmAction])
-//    }
-    
     private func send(to user: String, message: String) {
-        speech(message: message)
+        //        speech(message: message)
     }
     
     private func speech(message: String) {
         let synthesizer = AVSpeechSynthesizer()
+        synthesizer.delegate = self
         let utterance =  AVSpeechUtterance(string: message)
         utterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
         utterance.rate = 0.55
         utterance.volume = 1
         synthesizer.speak(utterance)
     }
+    
+    private var label: SKLabelNode?
+    
+    private func presentMessage() {
+        guard let sceneRoot = interfaceScene.scene?.rootNode, object = sceneRoot.childNode(withName:"teapot", recursively:true) else { return }
+        
+        let label = SKLabelNode(fontNamed: "System")
+        self.label = label
+        label.horizontalAlignmentMode = .center
+        label.text = "こんにちは!"
+        label.fontSize = 20
+        label.fontColor = UIColor.white()
+        let x = CGFloat(object.position.x) + (contentFrame.size.width / 2)
+        let y = CGFloat(object.position.y) + (contentFrame.size.height / 2)
+        label.position = CGPoint(x: x, y: y)
+        
+        let skScene = SKScene(size: CGSize(width: contentFrame.size.width, height: contentFrame.size.height))
+        skScene.scaleMode = SKSceneScaleMode.resizeFill
+        skScene.addChild(label)
+        
+        interfaceScene.overlaySKScene = skScene
+    }
+    
+    private func dismissMessage() {
+        DispatchQueue.main.after(when: .now() + 2.0) { [weak self] () in
+            self?.interfaceScene.overlaySKScene = nil
+        }
+    }
+    
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
+        presentMessage()
+    }
+    
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        dismissMessage()
+    }
+    
     
 }
