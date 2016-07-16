@@ -21,6 +21,9 @@
 		2BEAD8861D3A217200CEC543 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAD8851D3A217200CEC543 /* Chat.swift */; };
 		2BEAD8881D3A21A700CEC543 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAD8871D3A21A700CEC543 /* UserManager.swift */; };
 		2BEAD88C1D3A274000CEC543 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAD88B1D3A274000CEC543 /* Result.swift */; };
+		2BEAD88E1D3A2FFA00CEC543 /* FriendRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAD88D1D3A2FFA00CEC543 /* FriendRegistrationViewController.swift */; };
+		2BEAD8901D3A32F300CEC543 /* FriendRegistrationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAD88F1D3A32F300CEC543 /* FriendRegistrationTableViewCell.swift */; };
+		2BEAD8921D3A343300CEC543 /* UserLookupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAD8911D3A343300CEC543 /* UserLookupService.swift */; };
 		805ACA321D39B73300B76443 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805ACA311D39B73300B76443 /* AppDelegate.swift */; };
 		805ACA341D39B73300B76443 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805ACA331D39B73300B76443 /* ViewController.swift */; };
 		805ACA371D39B73300B76443 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 805ACA351D39B73300B76443 /* Main.storyboard */; };
@@ -109,6 +112,9 @@
 		2BEAD8851D3A217200CEC543 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		2BEAD8871D3A21A700CEC543 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		2BEAD88B1D3A274000CEC543 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		2BEAD88D1D3A2FFA00CEC543 /* FriendRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendRegistrationViewController.swift; sourceTree = "<group>"; };
+		2BEAD88F1D3A32F300CEC543 /* FriendRegistrationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendRegistrationTableViewCell.swift; sourceTree = "<group>"; };
+		2BEAD8911D3A343300CEC543 /* UserLookupService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLookupService.swift; sourceTree = "<group>"; };
 		805ACA2E1D39B73300B76443 /* CharacterChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CharacterChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		805ACA311D39B73300B76443 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		805ACA331D39B73300B76443 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +181,7 @@
 				2BEAD8851D3A217200CEC543 /* Chat.swift */,
 				2BEAD8871D3A21A700CEC543 /* UserManager.swift */,
 				2BEAD88B1D3A274000CEC543 /* Result.swift */,
+				2BEAD8911D3A343300CEC543 /* UserLookupService.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -212,6 +219,8 @@
 				2BC0C56E1D39CE3500396CC3 /* FriendTableViewController.swift */,
 				2BC0C5701D39CE4400396CC3 /* FriendTableViewCell.swift */,
 				805ACA351D39B73300B76443 /* Main.storyboard */,
+				2BEAD88D1D3A2FFA00CEC543 /* FriendRegistrationViewController.swift */,
+				2BEAD88F1D3A32F300CEC543 /* FriendRegistrationTableViewCell.swift */,
 				2BA9627A1D3A03C1009EDD5F /* AccountTableViewController.swift */,
 				2B7AC5B81D39C99100FFBFC9 /* ChatTableViewController.swift */,
 				2B7AC5BC1D39CBA100FFBFC9 /* ChatTableViewCell.swift */,
@@ -482,6 +491,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BEAD8901D3A32F300CEC543 /* FriendRegistrationTableViewCell.swift in Sources */,
+				2BEAD8921D3A343300CEC543 /* UserLookupService.swift in Sources */,
 				2BC0C5771D39D90C00396CC3 /* ChatDetailContainerViewController.swift in Sources */,
 				805ACA341D39B73300B76443 /* ViewController.swift in Sources */,
 				2BC0C56F1D39CE3500396CC3 /* FriendTableViewController.swift in Sources */,
@@ -490,6 +501,7 @@
 				2B7AC5B91D39C99100FFBFC9 /* ChatTableViewController.swift in Sources */,
 				2BEAD88C1D3A274000CEC543 /* Result.swift in Sources */,
 				2BC0C5711D39CE4400396CC3 /* FriendTableViewCell.swift in Sources */,
+				2BEAD88E1D3A2FFA00CEC543 /* FriendRegistrationViewController.swift in Sources */,
 				805ACA321D39B73300B76443 /* AppDelegate.swift in Sources */,
 				2BEAD8821D3A214B00CEC543 /* User.swift in Sources */,
 				2BEAD8861D3A217200CEC543 /* Chat.swift in Sources */,
