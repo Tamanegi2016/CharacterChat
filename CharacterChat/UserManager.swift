@@ -56,4 +56,8 @@ class UserManager {
         
         complate(result: Result([User]()))
     }
+    
+    func exportChats() -> [String: AnyObject] {
+        return ["data": chatLookup]
+    }
 }
