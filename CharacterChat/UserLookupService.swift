@@ -13,20 +13,30 @@ class UserLookupService {
         case general
     }
     
-    func fetch(with keyword: String? = nil, page: Int = 0, complete: (result: Result<[User], Error>) -> Void) {
+    func fetch(with keyword: String = "", page: Int = 0, complete: (result: Result<[User], Error>) -> Void) {
         let users: [User] = [
-            User(identifier: "", name: "テストユーザー1", profileImage: URL(string: "")!),
-            User(identifier: "", name: "テストユーザー2", profileImage: URL(string: "")!),
-            User(identifier: "", name: "テストユーザー3", profileImage: URL(string: "")!),
-            User(identifier: "", name: "テストユーザー4", profileImage: URL(string: "")!),
-            User(identifier: "", name: "テストユーザー5", profileImage: URL(string: "")!),
-            User(identifier: "", name: "テストユーザー6", profileImage: URL(string: "")!),
-            User(identifier: "", name: "テストユーザー7", profileImage: URL(string: "")!),
-            User(identifier: "", name: "テストユーザー8", profileImage: URL(string: "")!),
-            User(identifier: "", name: "テストユーザー9", profileImage: URL(string: "")!),
-            User(identifier: "", name: "テストユーザー10", profileImage: URL(string: "")!),
+            User(identifier: "", name: "あ", profileImage: URL(string: "")!),
+            User(identifier: "", name: "あい", profileImage: URL(string: "")!),
+            User(identifier: "", name: "あいう", profileImage: URL(string: "")!),
+            User(identifier: "", name: "あいうえ", profileImage: URL(string: "")!),
+            User(identifier: "", name: "あいうえお", profileImage: URL(string: "")!),
+            User(identifier: "", name: "あいうえおか", profileImage: URL(string: "")!),
+            User(identifier: "", name: "あいうえおかき", profileImage: URL(string: "")!),
+            User(identifier: "", name: "あいうえおかきく", profileImage: URL(string: "")!),
+            User(identifier: "", name: "あいうえおかきくけ", profileImage: URL(string: "")!),
+            User(identifier: "", name: "あいうえおかきくけこ", profileImage: URL(string: "")!),
         ]
-        complete(result: Result(users))
+        
+        let filteredUsers: [User]
+        if !keyword.isEmpty {
+            filteredUsers = users.filter { (user) -> Bool in
+                return user.name.hasPrefix(keyword)
+            }
+        } else {
+            filteredUsers = users
+        }
+        
+        complete(result: Result(filteredUsers))
     }
     
     deinit {
