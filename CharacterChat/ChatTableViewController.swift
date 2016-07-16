@@ -9,6 +9,7 @@
 import UIKit
 
 class ChatTableViewController: UITableViewController {
+    
     var chats = [Chat]()
     
     override func viewDidLoad() {
@@ -20,6 +21,7 @@ class ChatTableViewController: UITableViewController {
         
         NotificationCenter.default.addObserver(forName: UserManager.Notif.didLogout, object: nil, queue: OperationQueue.main) { [weak self] (notif) in
             self?.fetch()
+
         }
         
         NotificationCenter.default.addObserver(forName: UserManager.Notif.didLogin, object: nil, queue: OperationQueue.main) { [weak self] (notif) in
@@ -41,7 +43,7 @@ class ChatTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return chats.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,7 +55,7 @@ class ChatTableViewController: UITableViewController {
             if let imageIdentifier = cell.imageIdentifier where imageIdentifier == imageId {
                 switch result {
                 case .success(let data):
-                    cell.imageView?.image = UIImage(data: data)
+                    cell.profileImageView?.image = UIImage(data: data)
                 case .failure(_):
                     break
                 }
@@ -69,7 +71,12 @@ class ChatTableViewController: UITableViewController {
             case .success(let data):
                 self?.chats = data
             case .failure(_):
-                self?.chats = []
+                self?.chats = [
+                    Chat(friend: User(identifier: "", name: "", profileImage: URL(string: "https://pbs.twimg.com/profile_images/378800000220029324/fe66faeca20115da8566e51d83447ead_400x400.jpeg")!), message: []),
+                    Chat(friend: User(identifier: "", name: "", profileImage: URL(string: "https://pbs.twimg.com/profile_images/378800000220029324/fe66faeca20115da8566e51d83447ead_400x400.jpeg")!), message: []),
+                    Chat(friend: User(identifier: "", name: "", profileImage: URL(string: "https://pbs.twimg.com/profile_images/378800000220029324/fe66faeca20115da8566e51d83447ead_400x400.jpeg")!), message: []),
+                    Chat(friend: User(identifier: "", name: "", profileImage: URL(string: "https://pbs.twimg.com/profile_images/378800000220029324/fe66faeca20115da8566e51d83447ead_400x400.jpeg")!), message: []),
+                ]
             }
             self?.tableView.reloadData()
         })

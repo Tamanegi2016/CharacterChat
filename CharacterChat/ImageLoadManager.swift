@@ -14,29 +14,35 @@ class ImageLoadManager {
     }
     
     let cache = Cache<NSString, NSData>()
-    let session = URLSession(configuration: URLSessionConfiguration.default)
     
+    
+    let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: OperationQueue.main)
+
     static let sharedInstance = ImageLoadManager()
     
     func load(with url: URL?, complete: (result: Result<Data, Error>) -> Void) {
-        guard let url = url else {
-            complete(result: Result(.general))
-            return
-        }
-        
-        session.dataTask(with: url) { [weak self] (data, response, error) in
-            guard let data = data, let key = url.absoluteString else {
+        DispatchQueue.main.async { [weak self] in
+            guard let url = url, let urlString = url.absoluteString else {
                 complete(result: Result(.general))
                 return
             }
             
-            if let data = self?.cache.object(forKey: key) as? Data {
+            if let data = self?.cache.object(forKey: urlString) as? Data {
                 complete(result: Result(data))
             } else {
-                self?.cache.setObject(data, forKey: key)
-                complete(result: Result(data))
+                let task = self?.session.dataTask(with: url) { [weak self] (data, response, error) in
+                    guard let data = data else {
+                        complete(result: Result(.general))
+                        return
+                    }
+                    
+                    self?.cache.setObject(data, forKey: urlString)
+                    complete(result: Result(data))
+                }
+                task?.resume()
             }
         }
-        .resume()
+
+
     }
 }
