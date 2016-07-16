@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8036D4F61D3A0ECB0017C990 /* TalkInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8036D4F51D3A0ECB0017C990 /* TalkInterfaceController.swift */; };
+		8036D4F81D3A0F0B0017C990 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 8036D4F71D3A0F0B0017C990 /* art.scnassets */; };
 		2B7AC5B91D39C99100FFBFC9 /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7AC5B81D39C99100FFBFC9 /* ChatTableViewController.swift */; };
 		2B7AC5BD1D39CBA100FFBFC9 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7AC5BC1D39CBA100FFBFC9 /* ChatTableViewCell.swift */; };
 		2BA9627B1D3A03C1009EDD5F /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA9627A1D3A03C1009EDD5F /* AccountTableViewController.swift */; };
@@ -39,6 +41,7 @@
 		805ACA6F1D39B73300B76443 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805ACA6E1D39B73300B76443 /* ExtensionDelegate.swift */; };
 		805ACA711D39B73300B76443 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805ACA701D39B73300B76443 /* NotificationController.swift */; };
 		805ACA731D39B73300B76443 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 805ACA721D39B73300B76443 /* Assets.xcassets */; };
+		805ACA8B1D39BA6B00B76443 /* MessageListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805ACA8A1D39BA6B00B76443 /* MessageListRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +101,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8036D4F51D3A0ECB0017C990 /* TalkInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TalkInterfaceController.swift; sourceTree = "<group>"; };
+		8036D4F71D3A0F0B0017C990 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		2B7AC5B81D39C99100FFBFC9 /* ChatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
 		2B7AC5BC1D39CBA100FFBFC9 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		2BA9627A1D3A03C1009EDD5F /* AccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +144,7 @@
 		805ACA701D39B73300B76443 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		805ACA721D39B73300B76443 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		805ACA741D39B73300B76443 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		805ACA8A1D39BA6B00B76443 /* MessageListRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageListRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +179,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+        8036D4F41D3A0EBE0017C990 /* Controller */ = {
+            isa = PBXGroup;
+            children = (
+                8036D4F51D3A0ECB0017C990 /* TalkInterfaceController.swift */,
+                805ACA6C1D39B73300B76443 /* InterfaceController.swift */,
+            );
+            name = Controller;
+            sourceTree = "<group>";
+        };
 		2BEAD8801D3A213500CEC543 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,10 +281,12 @@
 		805ACA691D39B73300B76443 /* CharacterChat WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				805ACA6C1D39B73300B76443 /* InterfaceController.swift */,
+				8036D4F41D3A0EBE0017C990 /* Controller */,
+				805ACA881D39BA3200B76443 /* View */,
 				805ACA6E1D39B73300B76443 /* ExtensionDelegate.swift */,
 				805ACA701D39B73300B76443 /* NotificationController.swift */,
 				805ACA721D39B73300B76443 /* Assets.xcassets */,
+				8036D4F71D3A0F0B0017C990 /* art.scnassets */,
 				805ACA741D39B73300B76443 /* Info.plist */,
 				805ACA6A1D39B73300B76443 /* Supporting Files */,
 			);
@@ -282,6 +299,22 @@
 				805ACA6B1D39B73300B76443 /* PushNotificationPayload.apns */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		805ACA881D39BA3200B76443 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				805ACA891D39BA3A00B76443 /* Row */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		805ACA891D39BA3A00B76443 /* Row */ = {
+			isa = PBXGroup;
+			children = (
+				805ACA8A1D39BA6B00B76443 /* MessageListRow.swift */,
+			);
+			name = Row;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -481,6 +514,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				805ACA731D39B73300B76443 /* Assets.xcassets in Resources */,
+				8036D4F81D3A0F0B0017C990 /* art.scnassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +567,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8036D4F61D3A0ECB0017C990 /* TalkInterfaceController.swift in Sources */,
+				805ACA8B1D39BA6B00B76443 /* MessageListRow.swift in Sources */,
 				805ACA711D39B73300B76443 /* NotificationController.swift in Sources */,
 				805ACA6F1D39B73300B76443 /* ExtensionDelegate.swift in Sources */,
 				805ACA6D1D39B73300B76443 /* InterfaceController.swift in Sources */,
