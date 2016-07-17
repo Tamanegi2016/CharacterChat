@@ -8,8 +8,12 @@
 
 import Foundation
 
-struct Chat {
+class Chat {
     var friend: User
     var message: [Message]
     
+    init(friend: User, message: [Message]) {
+        self.friend = friend
+        self.message = message
+    }
 }

@@ -49,7 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
-        replyHandler(["result": "ok"])
+        let ary = UserManager.sharedInstance.chatLookup as NSArray
+        replyHandler(["result": ary.copy()])
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: NSError?) {
