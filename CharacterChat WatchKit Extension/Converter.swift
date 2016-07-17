@@ -20,7 +20,6 @@ class Converter {
         case lastmessagedate = "lastmessagedate"
     }
     
-    
     class func encode(with chats: [Chat]) -> [NSDictionary] {
         return chats
             .map { (chat) in

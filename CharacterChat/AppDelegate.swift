@@ -44,8 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     private func startSession() {
         guard WCSession.isSupported() else { return }
-        watchSession.activate()
         watchSession.delegate = self
+        watchSession.activate()
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {

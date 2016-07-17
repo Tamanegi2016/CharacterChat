@@ -14,6 +14,7 @@ enum Result<T> {
     case error(NSError)
 }
 
+
 class WatchConnectivityManager: NSObject, WCSessionDelegate {
     
     static let sharedManager = WatchConnectivityManager()
@@ -23,8 +24,8 @@ class WatchConnectivityManager: NSObject, WCSessionDelegate {
     override init() {
         super.init()
         if WCSession.isSupported() {
-            session.activate()
             session.delegate = self
+            session.activate()
         }
     }
     
@@ -43,7 +44,8 @@ class WatchConnectivityManager: NSObject, WCSessionDelegate {
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: NSError?) {
-        
+        let notification = Notification(name: Notification.Name("activateSuccessNotification"), object: nil, userInfo: nil)
+        NotificationCenter.default.post(notification)
     }
     
 }

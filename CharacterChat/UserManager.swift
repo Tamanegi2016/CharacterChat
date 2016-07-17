@@ -37,7 +37,7 @@ class UserManager {
             [
                 Message(identifier: "", type: .own, content: "こんにちわ1", createdAt: Date(timeIntervalSinceNow: -10)),
                 Message(identifier: "", type: .own, content: "こんにちわ2", createdAt: Date(timeIntervalSinceNow: -5)),
-                Message(identifier: "", type: .own, content: "こんにちわ3", createdAt: Date())
+                Message(identifier: "", type: .friend, content: "元気？", createdAt: Date())
             ]
         ),
         Chat(

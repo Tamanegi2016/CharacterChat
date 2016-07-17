@@ -44,6 +44,8 @@ class TalkInterfaceController: WKInterfaceController, SpeechSynthesizerDelegate 
         }
         if let message = chat?.friendLastMessage {
             synthesizer.speech(message: message)
+        } else {
+            switchScene(scene: .normal)
         }
     }
     
