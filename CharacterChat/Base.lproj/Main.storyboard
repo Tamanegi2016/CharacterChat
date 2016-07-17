@@ -326,7 +326,7 @@
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="CDi-10-4v9">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoProfile" translatesAutoresizingMaskIntoConstraints="NO" id="bQs-xN-S9a">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoProfile" translatesAutoresizingMaskIntoConstraints="NO" id="bQs-xN-S9a">
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="33S-c3-3t1"/>
@@ -576,7 +576,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uiC-lF-jwx">
+                                <subviews>
+                                    <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BxT-LF-S43"/>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="BxT-LF-S43" firstAttribute="leading" secondItem="uiC-lF-jwx" secondAttribute="leading" id="DgV-uB-4mb"/>
+                                    <constraint firstAttribute="trailing" secondItem="BxT-LF-S43" secondAttribute="trailing" id="SEX-ds-8yP"/>
+                                    <constraint firstAttribute="bottom" secondItem="BxT-LF-S43" secondAttribute="bottom" id="h3o-bX-Qz2"/>
+                                    <constraint firstItem="BxT-LF-S43" firstAttribute="top" secondItem="uiC-lF-jwx" secondAttribute="top" id="xsd-LV-VXw"/>
+                                </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z4H-VR-Yne">
                                 <connections>
@@ -597,15 +606,22 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="キャラクター作成" id="VhQ-89-KGt">
-                        <barButtonItem key="rightBarButtonItem" title="閉じる" id="4cT-Am-ch6">
+                        <barButtonItem key="leftBarButtonItem" id="FEZ-5x-caH">
                             <connections>
-                                <segue destination="cBQ-I3-6EZ" kind="unwind" unwindAction="unwindWithSegue:" id="Lup-MD-WTR"/>
+                                <action selector="didTapCaptureButton:" destination="ezL-jt-zda" id="iHf-8J-X5s"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="決定" id="4cT-Am-ch6">
+                            <connections>
+                                <action selector="didTapCloseButton:" destination="ezL-jt-zda" id="J6G-pE-9WI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="characterPreviewView" destination="BxT-LF-S43" id="oNO-mZ-mOo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cod-Kd-Fx4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="cBQ-I3-6EZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2780" y="1635.832083958021"/>
         </scene>
@@ -687,7 +703,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CharacterPartsViewCell" id="0sJ-gL-fTJ" customClass="CharacterPartsViewCell" customModule="CharacterChat" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="CharacterPartsViewCell" id="0sJ-gL-fTJ" customClass="CharacterPartsViewCell" customModule="CharacterChat" customModuleProvider="target">
                                         <frame key="frameInset" width="88" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">

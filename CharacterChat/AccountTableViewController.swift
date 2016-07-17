@@ -39,6 +39,11 @@ class AccountTableViewController: UIViewController, UITextFieldDelegate {
 
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        profileImageView.image = profileImage
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

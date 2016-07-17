@@ -27,7 +27,7 @@ class FriendTableViewController: UITableViewController, FriendRegistrationViewCo
         
         let alreadySelectFriend = UserDefaults.standard.bool(forKey: "alreadySelectFriend")
         if alreadySelectFriend {
-            presentCharacterSelectView = nil
+//            presentCharacterSelectView = nil
         }
         
         NotificationCenter.default.addObserver(forName: UserManager.Notif.didLogout, object: nil, queue: OperationQueue.main) { [weak self] (notif) in

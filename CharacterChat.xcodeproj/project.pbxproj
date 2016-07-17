@@ -12,6 +12,7 @@
 		2B467E541D3B18BF0041D106 /* CharacterPartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B467E531D3B18BF0041D106 /* CharacterPartsViewController.swift */; };
 		2B467E561D3B198A0041D106 /* CharacterPartsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B467E551D3B198A0041D106 /* CharacterPartsViewCell.swift */; };
 		2B467E581D3B1A680041D106 /* CharacterPartsSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B467E571D3B1A680041D106 /* CharacterPartsSelectViewController.swift */; };
+		2B467E5A1D3B28540041D106 /* test.dae in Resources */ = {isa = PBXBuildFile; fileRef = 2B467E591D3B28540041D106 /* test.dae */; };
 		2B7AC5B91D39C99100FFBFC9 /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7AC5B81D39C99100FFBFC9 /* ChatTableViewController.swift */; };
 		2B7AC5BD1D39CBA100FFBFC9 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7AC5BC1D39CBA100FFBFC9 /* ChatTableViewCell.swift */; };
 		2BA9627B1D3A03C1009EDD5F /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA9627A1D3A03C1009EDD5F /* AccountTableViewController.swift */; };
@@ -111,6 +112,7 @@
 		2B467E531D3B18BF0041D106 /* CharacterPartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterPartsViewController.swift; sourceTree = "<group>"; };
 		2B467E551D3B198A0041D106 /* CharacterPartsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterPartsViewCell.swift; sourceTree = "<group>"; };
 		2B467E571D3B1A680041D106 /* CharacterPartsSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterPartsSelectViewController.swift; sourceTree = "<group>"; };
+		2B467E591D3B28540041D106 /* test.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = test.dae; sourceTree = "<group>"; };
 		2B7AC5B81D39C99100FFBFC9 /* ChatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
 		2B7AC5BC1D39CBA100FFBFC9 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		2BA9627A1D3A03C1009EDD5F /* AccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				805ACA381D39B73300B76443 /* Assets.xcassets */,
 				805ACA3A1D39B73300B76443 /* LaunchScreen.storyboard */,
 				805ACA3D1D39B73300B76443 /* Info.plist */,
+				2B467E591D3B28540041D106 /* test.dae */,
 			);
 			path = CharacterChat;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B467E5A1D3B28540041D106 /* test.dae in Resources */,
 				805ACA3C1D39B73300B76443 /* LaunchScreen.storyboard in Resources */,
 				805ACA391D39B73300B76443 /* Assets.xcassets in Resources */,
 				805ACA371D39B73300B76443 /* Main.storyboard in Resources */,
