@@ -85,7 +85,10 @@ class FriendRegistrationViewController: UITableViewController, UISearchResultsUp
         alertController.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: { _ in }))
         alertController.addAction(UIAlertAction(title: "登録", style: .default, handler: { [weak self] (action) in
             guard let weakSelf = self else { return }
-            weakSelf.delegate?.viewController(vc: weakSelf, didRegister: weakSelf.people[indexPath.row])
+            UserManager.sharedInstance.addFriend(userId: "6") { (success) in
+                
+            }
+//            weakSelf.delegate?.viewController(vc: weakSelf, didRegister: weakSelf.people[indexPath.row])
         }))
         present(alertController, animated: true, completion: nil)
     }

@@ -94,6 +94,12 @@ class ChatDetailContainerViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func didTapSendButton(_ sender: UIButton) {
+        let message = inputTextView.text
+        
+        let friend = User(identifier: "6", name: "test_user5", profileImage: URL(string: "http://example.com")!)
+        UserManager.sharedInstance.message(to: friend, content: message!) { (success) in
+            
+        }
         keyboardState = .willHide
         inputTextView.resignFirstResponder()
         

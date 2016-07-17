@@ -27,7 +27,7 @@ class FriendTableViewController: UITableViewController, FriendRegistrationViewCo
         
         let alreadySelectFriend = UserDefaults.standard.bool(forKey: "alreadySelectFriend")
         if alreadySelectFriend {
-//            presentCharacterSelectView = nil
+            presentCharacterSelectView = nil
         }
         
         NotificationCenter.default.addObserver(forName: UserManager.Notif.didLogout, object: nil, queue: OperationQueue.main) { [weak self] (notif) in
@@ -79,6 +79,14 @@ class FriendTableViewController: UITableViewController, FriendRegistrationViewCo
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendTableViewCell", for: indexPath) as! FriendTableViewCell
         cell.nameLabel.text = friends[indexPath.row].name
+        ImageLoadManager.sharedInstance.load(with: friends[indexPath.row].profileImage) { (result) in
+            switch result {
+            case .success(let data):
+                cell.profileImageView.image = UIImage(data: data)
+            case .failure(_):
+                break
+            }
+        }
         return cell
     }
 
@@ -89,7 +97,7 @@ class FriendTableViewController: UITableViewController, FriendRegistrationViewCo
     
     // MARK:- FriendRegistrationViewControllerDelegate
     func viewController(vc: FriendRegistrationViewController, didRegister user: User) {
-        // TODO: - 登録処理
+
     }
     
     private func fetch() {

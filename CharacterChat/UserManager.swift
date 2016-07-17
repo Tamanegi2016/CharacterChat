@@ -14,6 +14,8 @@ class UserManager {
     // TODO:- 後で削除
     let sampleProfileImage = URL(string: "https://pbs.twimg.com/profile_images/378800000220029324/fe66faeca20115da8566e51d83447ead_400x400.jpeg")!
     
+    let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: OperationQueue.main)
+    
     struct Notif {
         static let willLogin = NSNotification.Name(rawValue: "willLogin")
         static let didLogin  = NSNotification.Name(rawValue: "didLogin")
@@ -84,11 +86,77 @@ class UserManager {
     }
     
     func requestFriends(complate: (result: Result<[User], Error>) -> Void) {
-        guard let own = own else {
-            complate(result: Result(Error.userNotFound))
-            return
+//        guard let own = own else {
+//            complate(result: Result(Error.userNotFound))
+//            return
+//        }
+        
+        let task = session.dataTask(with: URL(string: "http://0.0.0.0:3000/friendlist/2")!) { (data, response, error) in
+            guard let data = data else {
+                complate(result: Result(Error.userNotFound))
+                return
+            }
+            
+            if let jsonObj = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers), let aryObj = jsonObj as? NSArray {
+                var friends = [User]()
+                for friendObj in aryObj {
+                    if let dictObj = friendObj as? NSDictionary,
+                        name = dictObj["name"] as? String,
+                        identifier = dictObj["id"] as? Int,
+                        profileUrl = dictObj["profile_url"] as? String {
+                        friends.append(User(identifier: "\(identifier)", name: name, profileImage: URL(string: profileUrl)!))
+                    }
+                }
+                complate(result: Result(friends))
+            } else {
+                complate(result: Result(Error.userNotFound))
+            }
+            
+            
         }
         
-        complate(result: Result([User]()))
+        task.resume()
+        
+    }
+    
+    func addFriend(userId: String, complete: (success: Bool) -> Void) {
+        //        guard let own = own else {
+        //            complate(result: Result(Error.userNotFound))
+        //            return
+        //        }
+
+        var request = URLRequest(url: URL(string: "http://0.0.0.0:3000/friend/2/\(userId)")!)
+        request.httpMethod = "POST"
+        
+        let task = session.dataTask(with: request) { (data, response, error) in
+            if let _ = error {
+                complete(success: false)
+            } else {
+                complete(success: true)
+            }
+        }
+        
+        task.resume()
+    }
+    
+    func message(to friend: User, content: String, complete: (success: Bool) -> Void) {
+        //        guard let own = own else {
+        //            complate(result: Result(Error.userNotFound))
+        //            return
+        //        }
+        
+        let encodedContent = content.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics)!
+        var request = URLRequest(url: URL(string: "http://0.0.0.0:3000/talk/2/\(friend.identifier)/\(encodedContent)")!)
+        request.httpMethod = "POST"
+        
+        let task = session.dataTask(with: request) { (data, response, error) in
+            if let _ = error {
+                complete(success: false)
+            } else {
+                complete(success: true)
+            }
+        }
+        
+        task.resume()
     }
 }
