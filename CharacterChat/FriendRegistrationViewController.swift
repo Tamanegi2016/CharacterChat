@@ -50,9 +50,11 @@ class FriendRegistrationViewController: UITableViewController, UISearchResultsUp
     }
 
     // MARK:- UISearchResultsUpdating
+    var task: URLSessionTask?
     func updateSearchResults(for searchController: UISearchController) {
+        task?.cancel()
         service = UserLookupService()
-        service.fetch(with: searchController.searchBar.text ?? "") { [weak self] (result) in
+        task = service.fetch(with: searchController.searchBar.text ?? "") { [weak self] (result) in
             switch result {
             case .success(let users):
                 self?.people = users
