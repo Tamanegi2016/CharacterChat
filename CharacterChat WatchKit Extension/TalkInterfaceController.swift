@@ -15,7 +15,26 @@ import AVFoundation
 class TalkInterfaceController: WKInterfaceController, AVSpeechSynthesizerDelegate {
     
     @IBOutlet var interfaceScene: WKInterfaceSCNScene!
+    private let synthesizer = AVSpeechSynthesizer()
     private var label: SKLabelNode?
+    
+    private var scene: SCNNode? {
+        return interfaceScene.scene?.rootNode
+    }
+    
+    private var object: SCNNode? {
+        return getNode(name: "Plane")
+    }
+    
+    private var camera: SCNCamera? {
+        let cameraNode = getNode(name: "Camera")
+        let camera = cameraNode?.camera
+        return camera
+    }
+    
+    private func getNode(name: String) -> SCNNode? {
+        return scene?.childNode(withName: name, recursively: true)
+    }
     
     override func awake(withContext context: AnyObject?) {
         super.awake(withContext: context)
@@ -34,6 +53,22 @@ class TalkInterfaceController: WKInterfaceController, AVSpeechSynthesizerDelegat
     }
     
     private func setup() {
+        let cameraNode = getNode(name: "Camera")
+        
+        let text = SCNText(string: "TEST", extrusionDepth: 0.0)
+        let textNode = SCNNode(geometry: text)
+        textNode.position = SCNVector3Make(
+            Float(cameraNode?.position.x ?? 0),
+            Float(cameraNode?.position.y ?? 0),
+            Float(camera?.zNear ?? 0)
+        )
+        textNode.eulerAngles = SCNVector3Make(
+            cameraNode?.eulerAngles.x ?? 0,
+            cameraNode?.eulerAngles.y ?? 0,
+            cameraNode?.eulerAngles.z ?? 0
+        )
+        
+        scene?.addChildNode(textNode)
     }
     
     private func run() {
@@ -53,7 +88,6 @@ class TalkInterfaceController: WKInterfaceController, AVSpeechSynthesizerDelegat
     }
     
     private func speech(message: String) {
-        let synthesizer = AVSpeechSynthesizer()
         synthesizer.delegate = self
         let utterance =  AVSpeechUtterance(string: message)
         utterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
@@ -61,17 +95,16 @@ class TalkInterfaceController: WKInterfaceController, AVSpeechSynthesizerDelegat
         utterance.volume = 1
         synthesizer.speak(utterance)
     }
+    
     private func presentMessage() {
-        guard let sceneRoot = interfaceScene.scene?.rootNode, object = sceneRoot.childNode(withName:"teapot", recursively:true) else { return }
-        
         let label = SKLabelNode(fontNamed: "System")
         self.label = label
         label.horizontalAlignmentMode = .center
         label.text = "おはよう"
         label.fontSize = 20
         label.fontColor = UIColor.white()
-        let x = CGFloat(object.position.x) + (contentFrame.size.width / 2)
-        let y = CGFloat(object.position.y) + (contentFrame.size.height / 2)
+        let x = CGFloat(object?.position.x ?? 0) + (contentFrame.size.width / 2)
+        let y = CGFloat(object?.position.y ?? 0) + (contentFrame.size.height / 2)
         label.position = CGPoint(x: x, y: y)
         
         let skScene = SKScene(size: CGSize(width: contentFrame.size.width, height: contentFrame.size.height))
