@@ -72,7 +72,7 @@
                                 <action selector="didTappedTalkButton" destination="6Kp-Xr-ksS" id="AbE-1M-P22"/>
                             </connections>
                         </button>
-                        <sceneKitScene alignment="left" scene="art.scnassets/sample.scn" id="mda-Fm-Eag"/>
+                        <sceneKitScene alignment="left" scene="art.scnassets/test.dae" id="mda-Fm-Eag"/>
                     </items>
                     <connections>
                         <outlet property="interfaceScene" destination="mda-Fm-Eag" id="LGr-WC-sfG"/>
