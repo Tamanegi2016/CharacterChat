@@ -31,12 +31,12 @@ class FriendTableViewController: UITableViewController, FriendRegistrationViewCo
         }
         
         NotificationCenter.default.addObserver(forName: UserManager.Notif.didLogout, object: nil, queue: OperationQueue.main) { [weak self] (notif) in
-            self?.fetch()
+            self?.friends = []
+            self?.tableView.reloadData()
         }
         
         NotificationCenter.default.addObserver(forName: UserManager.Notif.didLogin, object: nil, queue: OperationQueue.main) { [weak self] (notif) in
-            self?.friends = []
-            self?.tableView.reloadData()
+            self?.fetch()
         }
         
         fetch()

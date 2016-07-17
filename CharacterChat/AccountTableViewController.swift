@@ -17,6 +17,8 @@ class AccountTableViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var contentCenterYConstraint: NSLayoutConstraint!
     @IBOutlet weak var contentBottomConstraint: NSLayoutConstraint!
     
+    var inputUserName: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,8 +68,9 @@ class AccountTableViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func didTapLoginButton(_ sender: UIButton) {
-        
-        dismiss(animated: true, completion: nil)
+        if let name = inputUserName where !name.isEmpty {
+            UserManager.sharedInstance.login(with: name)
+        }
     }
     
     enum KeyboardState {
@@ -119,6 +122,7 @@ class AccountTableViewController: UIViewController, UITextFieldDelegate {
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        inputUserName = textField.text.flatMap { $0 + string }
         return true
     }
     

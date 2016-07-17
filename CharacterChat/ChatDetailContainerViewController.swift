@@ -102,6 +102,7 @@ class ChatDetailContainerViewController: UIViewController, UITextViewDelegate {
         }
         keyboardState = .willHide
         inputTextView.resignFirstResponder()
+        inputTextView.text = nil
         
     }
     

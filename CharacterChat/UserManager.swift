@@ -39,7 +39,7 @@ class UserManager {
         NotificationCenter.default.post(name: Notif.willLogin, object: self, userInfo: nil)
         
         let encodedUserName = userName.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics)!
-        let task = session.dataTask(with: URL(string: "http://0.0.0.0:3000/users?user_name=\(encodedUserName)")!) { [weak self] (data, response, error) in
+        let task = session.dataTask(with: URL(string: "http://0.0.0.0:3000/get_users_from_name?user_name=\(encodedUserName)")!) { [weak self] (data, response, error) in
             guard let data = data else {
                 return
             }
@@ -108,12 +108,12 @@ class UserManager {
     }
     
     func requestFriends(complate: (result: Result<[User], Error>) -> Void) {
-//        guard let own = own else {
-//            complate(result: Result(Error.userNotFound))
-//            return
-//        }
+        guard let own = own else {
+            complate(result: Result(Error.userNotFound))
+            return
+        }
         
-        let task = session.dataTask(with: URL(string: "http://0.0.0.0:3000/friendlist/2")!) { (data, response, error) in
+        let task = session.dataTask(with: URL(string: "http://0.0.0.0:3000/friendlist/\(own.identifier)")!) { (data, response, error) in
             guard let data = data else {
                 complate(result: Result(Error.userNotFound))
                 return
@@ -142,12 +142,12 @@ class UserManager {
     }
     
     func addFriend(userId: String, complete: (success: Bool) -> Void) {
-        //        guard let own = own else {
-        //            complate(result: Result(Error.userNotFound))
-        //            return
-        //        }
+                guard let own = own else {
+                    complete(success: false)
+                    return
+                }
 
-        var request = URLRequest(url: URL(string: "http://0.0.0.0:3000/friend/2/\(userId)")!)
+        var request = URLRequest(url: URL(string: "http://0.0.0.0:3000/friend/\(own.identifier)/\(userId)")!)
         request.httpMethod = "POST"
         
         let task = session.dataTask(with: request) { (data, response, error) in
@@ -162,13 +162,13 @@ class UserManager {
     }
     
     func message(to friend: User, content: String, complete: (success: Bool) -> Void) {
-        //        guard let own = own else {
-        //            complate(result: Result(Error.userNotFound))
-        //            return
-        //        }
+                guard let own = own else {
+                    complete(success: false)
+                    return
+                }
         
         let encodedContent = content.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics)!
-        var request = URLRequest(url: URL(string: "http://0.0.0.0:3000/talk/2/\(friend.identifier)/\(encodedContent)")!)
+        var request = URLRequest(url: URL(string: "http://0.0.0.0:3000/talk/\(own.identifier)/\(friend.identifier)/\(encodedContent)")!)
         request.httpMethod = "POST"
         
         let task = session.dataTask(with: request) { (data, response, error) in
