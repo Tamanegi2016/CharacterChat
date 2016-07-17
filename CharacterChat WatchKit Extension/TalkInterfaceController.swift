@@ -13,6 +13,22 @@ import SceneKit
 
 class TalkInterfaceController: WKInterfaceController, SpeechSynthesizerDelegate {
     
+    enum Scene {
+        case normal
+        case kasige
+        
+        func create() -> SCNScene? {
+            return SCNScene(named: self.filename)
+        }
+        
+        private var filename: String {
+            switch self {
+            case .normal: return "art.scnassets/default.dae"
+            case .kasige: return "art.scnassets/kasige.dae"
+            }
+        }
+    }
+    
     @IBOutlet var interfaceScene: WKInterfaceSCNScene!
     private var synthesizer = SpeechSynthesizer()
     private let manager = WatchConnectivityManager.sharedManager
@@ -21,18 +37,18 @@ class TalkInterfaceController: WKInterfaceController, SpeechSynthesizerDelegate 
     
     override func awake(withContext context: AnyObject?) {
         super.awake(withContext: context)
+        
         synthesizer.delegate = self
         if let chat = context as? Chat {
             setup(with: chat)
+        }
+        if let message = chat?.friendLastMessage {
+            synthesizer.speech(message: message)
         }
     }
     
     override func willActivate() {
         super.willActivate()
-        
-        if let message = chat?.friendLastMessage {
-            synthesizer.speech(message: message)
-        }
     }
     
     override func didDeactivate() {
@@ -46,6 +62,9 @@ class TalkInterfaceController: WKInterfaceController, SpeechSynthesizerDelegate 
     @IBAction func didTappedTalkButton() {
         presentTextInputController(withSuggestions: nil, allowedInputMode: .plain) { [weak self] (results) in
             if let results = results, message = results.first as? String, let id = self?.chat?.friend.identifier {
+                self?.present(message: message, dismissOption: (autoDismiss: true, completion: {
+                    self?.switchScene(scenes: [.kasige, .normal], interval: 2.0)
+                }))
                 self?.send(to: id, message: message)
             }
         }
@@ -64,11 +83,12 @@ class TalkInterfaceController: WKInterfaceController, SpeechSynthesizerDelegate 
 
 extension TalkInterfaceController {
     func speechSynthesizer(synthesizer: SpeechSynthesizer, didStart speechString: String) {
-        presentMessage()
+        present(message: speechString)
     }
     
     func speechSynthesizer(synthesizer: SpeechSynthesizer, didFinish speechString: String) {
         dismissMessage()
+        switchScene(scene: .normal)
     }
 }
 
@@ -90,14 +110,28 @@ extension TalkInterfaceController {
     private func getNode(name: String) -> SCNNode? {
         return scene?.childNode(withName: name, recursively: true)
     }
+    
+    private func switchScene(scene: Scene) {
+        interfaceScene.scene = scene.create()
+    }
+    
+    private func switchScene(scenes: [Scene], interval: TimeInterval) {
+        scenes.enumerated().forEach { (offset, scene) in
+            DispatchQueue.main.after(when: .now() + interval * Double(offset), execute: { [weak self] in
+                self?.interfaceScene.scene = scene.create()
+            })
+        }
+    }
 }
 
 extension TalkInterfaceController {
-    private func presentMessage() {
+    typealias DismissOption = (autoDismiss: Bool, completion: ((()->())?))
+    
+    private func present(message: String, dismissOption: DismissOption? = nil) {
         let label = SKLabelNode(fontNamed: "System")
         self.label = label
         label.horizontalAlignmentMode = .center
-        label.text = "おはよう"
+        label.text = message
         label.fontSize = 20
         label.fontColor = UIColor.white()
         let x = CGFloat(object?.position.x ?? 0) + (contentFrame.size.width / 2)
@@ -109,6 +143,10 @@ extension TalkInterfaceController {
         skScene.addChild(label)
         
         interfaceScene.overlaySKScene = skScene
+
+        if let option = dismissOption where option.autoDismiss == true {
+            dismissMessage(completion: option.completion)
+        }
     }
     
 //    private func present3DMessage() {
@@ -133,9 +171,12 @@ extension TalkInterfaceController {
 //        scene?.addChildNode(textNode)
 //    }
     
-    private func dismissMessage() {
+    private func dismissMessage(completion: (() -> ())? = nil) {
         DispatchQueue.main.after(when: .now() + 2.0) { [weak self] () in
             self?.interfaceScene.overlaySKScene = nil
+            if let completion = completion {
+                completion()
+            }
         }
     }
 }
