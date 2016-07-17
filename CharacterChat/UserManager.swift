@@ -161,14 +161,14 @@ class UserManager {
         task.resume()
     }
     
-    func message(to friend: User, content: String, complete: (success: Bool) -> Void) {
+    func message(to userId: String, content: String, complete: (success: Bool) -> Void) {
                 guard let own = own else {
                     complete(success: false)
                     return
                 }
         
         let encodedContent = content.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics)!
-        var request = URLRequest(url: URL(string: "http://0.0.0.0:3000/talk/\(own.identifier)/\(friend.identifier)/\(encodedContent)")!)
+        var request = URLRequest(url: URL(string: "http://0.0.0.0:3000/talk/\(own.identifier)/\(userId)/\(encodedContent)")!)
         request.httpMethod = "POST"
         
         let task = session.dataTask(with: request) { (data, response, error) in

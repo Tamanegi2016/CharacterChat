@@ -25,10 +25,10 @@ class FriendTableViewController: UITableViewController, FriendRegistrationViewCo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let alreadySelectFriend = UserDefaults.standard.bool(forKey: "alreadySelectFriend")
-        if alreadySelectFriend {
+//        let alreadySelectFriend = UserDefaults.standard.bool(forKey: "alreadySelectFriend")
+//        if alreadySelectFriend {
             presentCharacterSelectView = nil
-        }
+//        }
         
         NotificationCenter.default.addObserver(forName: UserManager.Notif.didLogout, object: nil, queue: OperationQueue.main) { [weak self] (notif) in
             self?.friends = []

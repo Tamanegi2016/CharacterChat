@@ -342,6 +342,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                         <connections>
+                                            <action selector="textFieldDidChanage:" destination="JYy-hL-I0F" eventType="editingChanged" id="RIV-VE-6x3"/>
                                             <outlet property="delegate" destination="JYy-hL-I0F" id="Tve-wJ-BSL"/>
                                         </connections>
                                     </textField>
