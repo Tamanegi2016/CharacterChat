@@ -50,8 +50,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
-        let ary = UserManager.sharedInstance.chatLookup as NSArray
-        replyHandler(["result": ary.copy()])
+        message.forEach { (key, value) in
+            switch key {
+            case "get":
+                let chats = UserManager.sharedInstance.chatLookup
+                let ary = Converter.encode(with: chats)
+                replyHandler(["result": ary])
+            case "post":
+                if let id = value["userid"] as? String, let message = value["message"] as? String {
+                    UserManager.sharedInstance.message(to: id, content: message, complete: { (success) in
+                        replyHandler(["result": success])
+                    })
+                }
+            default: break
+            }
+        }
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: NSError?) {
