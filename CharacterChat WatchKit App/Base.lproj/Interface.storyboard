@@ -13,7 +13,7 @@
                         <table alignment="left" id="CkC-6l-UJM">
                             <items>
                                 <tableRow identifier="MessageListRow" id="n0y-zi-ple" customClass="MessageListRow" customModule="CharacterChat_WatchKit_Extension">
-                                    <group key="rootItem" width="1" height="50" alignment="left" spacing="5" id="l3z-yg-tdk">
+                                    <group key="rootItem" width="1" height="53" alignment="left" spacing="5" id="l3z-yg-tdk">
                                         <items>
                                             <imageView width="38" height="41" alignment="left" contentMode="scaleAspectFit" id="qmG-jW-Sws"/>
                                             <group width="1" alignment="left" layout="vertical" id="3DW-Vu-aFe">
@@ -27,6 +27,7 @@
                                                 </items>
                                             </group>
                                         </items>
+                                        <edgeInsets key="margins" left="5" right="0.0" top="6" bottom="0.0"/>
                                     </group>
                                     <connections>
                                         <outlet property="image" destination="qmG-jW-Sws" id="Q9F-VD-8Eb"/>

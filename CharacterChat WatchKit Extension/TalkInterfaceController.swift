@@ -134,7 +134,7 @@ extension TalkInterfaceController {
         self.label = label
         label.horizontalAlignmentMode = .center
         label.text = message
-        label.fontSize = 20
+        label.fontSize = CGFloat(100 / message.characters.count)
         label.fontColor = UIColor.white()
         let x = CGFloat(object?.position.x ?? 0) + (contentFrame.size.width / 2)
         let y = CGFloat(object?.position.y ?? 0) + (contentFrame.size.height / 2)
@@ -150,28 +150,6 @@ extension TalkInterfaceController {
             dismissMessage(completion: option.completion)
         }
     }
-    
-//    private func present3DMessage() {
-//        let cameraNode = getNode(name: "Camera")
-//        
-//        let text = SCNText(string: "おはよう", extrusionDepth: 5.0)
-//        let textNode = SCNNode(geometry: text)
-//        let cameraPosition = cameraNode?.position ?? SCNVector3Zero
-//        let cameraZNear = camera?.zNear ?? 0
-//        textNode.position = SCNVector3Make(
-//            Float(cameraPosition.x - 4),
-//            Float(cameraPosition.y - 4),
-//            Float(cameraZNear + 5)
-//        )
-//        textNode.eulerAngles = SCNVector3Make(
-//            cameraNode?.eulerAngles.x ?? 0,
-//            cameraNode?.eulerAngles.y ?? 0,
-//            cameraNode?.eulerAngles.z ?? 0
-//        )
-//        let scaleValue: Float = 0.4
-//        textNode.scale = SCNVector3Make(scaleValue, scaleValue, scaleValue)
-//        scene?.addChildNode(textNode)
-//    }
     
     private func dismissMessage(completion: (() -> ())? = nil) {
         DispatchQueue.main.after(when: .now() + 2.0) { [weak self] () in
