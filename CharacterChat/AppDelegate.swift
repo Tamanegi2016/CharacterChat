@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         startSession()
+//        UserManager.sharedInstance.login(with: "test_user")
         return true
     }
     
@@ -56,7 +57,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                 let ary = Converter.encode(with: chats)
                 replyHandler(["result": ary])
             case "post":
-                break
+                if let id = value["userid"] as? String, let message = value["message"] as? String {
+                    UserManager.sharedInstance.message(to: id, content: message, complete: { (success) in
+                        replyHandler(["result": success])
+                    })
+                }
             default: break
             }
         }

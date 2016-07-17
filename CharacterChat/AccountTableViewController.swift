@@ -17,10 +17,22 @@ class AccountTableViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var contentCenterYConstraint: NSLayoutConstraint!
     @IBOutlet weak var contentBottomConstraint: NSLayoutConstraint!
     
+    var inputUserName: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        profileImageView.layer.cornerRadius = 50
+        
         nameLabel.text = UserManager.sharedInstance.own?.name
+        ImageLoadManager.sharedInstance.load(with: UserManager.sharedInstance.own?.profileImage) { [weak self] (result) in
+            switch result {
+            case .success(let data):
+                self?.profileImageView?.image = UIImage(data: data)
+            case .failure(_):
+                break
+            }
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(AccountTableViewController.keyboardDidShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AccountTableViewController.keyboardDidHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
@@ -33,20 +45,32 @@ class AccountTableViewController: UIViewController, UITextFieldDelegate {
         
         NotificationCenter.default.addObserver(forName: UserManager.Notif.didLogin, object: nil, queue: OperationQueue.main) { [weak self] (notif) in
             self?.nameLabel.text = UserManager.sharedInstance.own?.name
-            self?.nameLabel.text = "ゲスト"
-            self?.profileImageView?.image = UIImage(named: "NoProfile")
+            ImageLoadManager.sharedInstance.load(with: UserManager.sharedInstance.own?.profileImage) { [weak self] (result) in
+                switch result {
+                case .success(let data):
+                    self?.profileImageView?.image = UIImage(data: data)
+                case .failure(_):
+                    break
+                }
+            }
         }
 
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        profileImageView.image = profileImage
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     @IBAction func didTapLoginButton(_ sender: UIButton) {
-        
-        dismiss(animated: true, completion: nil)
+        if let name = inputUserName where !name.isEmpty {
+            UserManager.sharedInstance.login(with: name)
+        }
     }
     
     enum KeyboardState {
@@ -96,9 +120,9 @@ class AccountTableViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return true
+    
+    @IBAction func textFieldDidChanage(_ sender: UITextField) {
+        inputUserName = sender.text
     }
     
     deinit {

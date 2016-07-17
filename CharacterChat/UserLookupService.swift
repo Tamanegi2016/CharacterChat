@@ -13,30 +13,37 @@ class UserLookupService {
         case general
     }
     
-    func fetch(with keyword: String = "", page: Int = 0, complete: (result: Result<[User], Error>) -> Void) {
-        let users: [User] = [
-            User(identifier: "", name: "あ", profileImage: URL(string: "")!),
-            User(identifier: "", name: "あい", profileImage: URL(string: "")!),
-            User(identifier: "", name: "あいう", profileImage: URL(string: "")!),
-            User(identifier: "", name: "あいうえ", profileImage: URL(string: "")!),
-            User(identifier: "", name: "あいうえお", profileImage: URL(string: "")!),
-            User(identifier: "", name: "あいうえおか", profileImage: URL(string: "")!),
-            User(identifier: "", name: "あいうえおかき", profileImage: URL(string: "")!),
-            User(identifier: "", name: "あいうえおかきく", profileImage: URL(string: "")!),
-            User(identifier: "", name: "あいうえおかきくけ", profileImage: URL(string: "")!),
-            User(identifier: "", name: "あいうえおかきくけこ", profileImage: URL(string: "")!),
-        ]
-        
-        let filteredUsers: [User]
-        if !keyword.isEmpty {
-            filteredUsers = users.filter { (user) -> Bool in
-                return user.name.hasPrefix(keyword)
+    let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: OperationQueue.main)
+    
+    func fetch(with keyword: String = "", page: Int = 0, complete: (result: Result<[User], Error>) -> Void) -> URLSessionTask {
+        let encodedUserName = keyword.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics)!
+        let task = session.dataTask(with: URL(string: "http://0.0.0.0:3000/search_users?query=\(encodedUserName)")!) { (data, response, error) in
+            guard let data = data else {
+                complete(result: Result(Error.general))
+                return
             }
-        } else {
-            filteredUsers = users
+            
+            if let jsonObj = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers), let aryObj = jsonObj as? NSArray {
+                var friends = [User]()
+                for friendObj in aryObj {
+                    if let dictObj = friendObj as? NSDictionary,
+                        name = dictObj["name"] as? String,
+                        identifier = dictObj["id"] as? Int,
+                        profileUrl = dictObj["profile_url"] as? String {
+                        friends.append(User(identifier: "\(identifier)", name: name, profileImage: URL(string: profileUrl)!))
+                    }
+                }
+                complete(result: Result(friends))
+            } else {
+                complete(result: Result(Error.general))
+            }
+            
+            
         }
         
-        complete(result: Result(filteredUsers))
+        task.resume()
+        
+        return task
     }
     
     deinit {

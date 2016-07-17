@@ -94,8 +94,14 @@ class ChatDetailContainerViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func didTapSendButton(_ sender: UIButton) {
+        let message = inputTextView.text
+        
+        UserManager.sharedInstance.message(to: "6", content: message!) { (success) in
+            
+        }
         keyboardState = .willHide
         inputTextView.resignFirstResponder()
+        inputTextView.text = nil
         
     }
     

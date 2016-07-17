@@ -73,7 +73,7 @@ class TalkInterfaceController: WKInterfaceController, SpeechSynthesizerDelegate 
     }
     
     private func send(to userid: String, message: String) {
-        manager.send(with: ["post": ["userid": userid, message: message]]) { (result) in
+        manager.send(with: ["post": ["userid": userid, "message": message]]) { (result) in
             switch result {
             case .success(let result): break
             case .error(let error): print(error)

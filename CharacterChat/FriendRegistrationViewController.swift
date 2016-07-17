@@ -50,9 +50,11 @@ class FriendRegistrationViewController: UITableViewController, UISearchResultsUp
     }
 
     // MARK:- UISearchResultsUpdating
+    var task: URLSessionTask?
     func updateSearchResults(for searchController: UISearchController) {
+        task?.cancel()
         service = UserLookupService()
-        service.fetch(with: searchController.searchBar.text ?? "") { [weak self] (result) in
+        task = service.fetch(with: searchController.searchBar.text ?? "") { [weak self] (result) in
             switch result {
             case .success(let users):
                 self?.people = users
@@ -85,7 +87,10 @@ class FriendRegistrationViewController: UITableViewController, UISearchResultsUp
         alertController.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: { _ in }))
         alertController.addAction(UIAlertAction(title: "登録", style: .default, handler: { [weak self] (action) in
             guard let weakSelf = self else { return }
-            weakSelf.delegate?.viewController(vc: weakSelf, didRegister: weakSelf.people[indexPath.row])
+            UserManager.sharedInstance.addFriend(userId: "6") { (success) in
+                
+            }
+//            weakSelf.delegate?.viewController(vc: weakSelf, didRegister: weakSelf.people[indexPath.row])
         }))
         present(alertController, animated: true, completion: nil)
     }

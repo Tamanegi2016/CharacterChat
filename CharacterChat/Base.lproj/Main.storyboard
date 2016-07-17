@@ -326,11 +326,11 @@
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="CDi-10-4v9">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoProfile" translatesAutoresizingMaskIntoConstraints="NO" id="bQs-xN-S9a">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoProfile" translatesAutoresizingMaskIntoConstraints="NO" id="bQs-xN-S9a">
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="33S-c3-3t1"/>
-                                            <constraint firstAttribute="width" constant="80" id="GTj-fi-7GC"/>
+                                            <constraint firstAttribute="height" constant="100" id="33S-c3-3t1"/>
+                                            <constraint firstAttribute="width" constant="100" id="GTj-fi-7GC"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名前" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KX9-p6-gJg">
@@ -342,11 +342,12 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                         <connections>
+                                            <action selector="textFieldDidChanage:" destination="JYy-hL-I0F" eventType="editingChanged" id="RIV-VE-6x3"/>
                                             <outlet property="delegate" destination="JYy-hL-I0F" id="Tve-wJ-BSL"/>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsq-tj-caJ">
-                                        <state key="normal" title="ログイン"/>
+                                        <state key="normal" title="ユーザーを切り替える"/>
                                         <connections>
                                             <action selector="didTapLoginButton:" destination="JYy-hL-I0F" eventType="touchUpInside" id="LZH-uf-y1m"/>
                                         </connections>
@@ -576,7 +577,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uiC-lF-jwx">
+                                <subviews>
+                                    <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BxT-LF-S43"/>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="BxT-LF-S43" firstAttribute="leading" secondItem="uiC-lF-jwx" secondAttribute="leading" id="DgV-uB-4mb"/>
+                                    <constraint firstAttribute="trailing" secondItem="BxT-LF-S43" secondAttribute="trailing" id="SEX-ds-8yP"/>
+                                    <constraint firstAttribute="bottom" secondItem="BxT-LF-S43" secondAttribute="bottom" id="h3o-bX-Qz2"/>
+                                    <constraint firstItem="BxT-LF-S43" firstAttribute="top" secondItem="uiC-lF-jwx" secondAttribute="top" id="xsd-LV-VXw"/>
+                                </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z4H-VR-Yne">
                                 <connections>
@@ -597,15 +607,22 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="キャラクター作成" id="VhQ-89-KGt">
-                        <barButtonItem key="rightBarButtonItem" title="閉じる" id="4cT-Am-ch6">
+                        <barButtonItem key="leftBarButtonItem" id="FEZ-5x-caH">
                             <connections>
-                                <segue destination="cBQ-I3-6EZ" kind="unwind" unwindAction="unwindWithSegue:" id="Lup-MD-WTR"/>
+                                <action selector="didTapCaptureButton:" destination="ezL-jt-zda" id="iHf-8J-X5s"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="決定" id="4cT-Am-ch6">
+                            <connections>
+                                <action selector="didTapCloseButton:" destination="ezL-jt-zda" id="J6G-pE-9WI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="characterPreviewView" destination="BxT-LF-S43" id="oNO-mZ-mOo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cod-Kd-Fx4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="cBQ-I3-6EZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2780" y="1635.832083958021"/>
         </scene>
@@ -673,7 +690,7 @@
                         <viewControllerLayoutGuide type="bottom" id="qeM-DJ-vQU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kc2-05-Udk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="258"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="258.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xdA-d6-w89">
@@ -687,7 +704,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CharacterPartsViewCell" id="0sJ-gL-fTJ" customClass="CharacterPartsViewCell" customModule="CharacterChat" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="CharacterPartsViewCell" id="0sJ-gL-fTJ" customClass="CharacterPartsViewCell" customModule="CharacterChat" customModuleProvider="target">
                                         <frame key="frameInset" width="88" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -747,7 +764,7 @@
             <objects>
                 <collectionViewController id="iHk-YF-zzd" customClass="CharacterPartsSelectViewController" customModule="CharacterChat" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Y3d-RN-v5A">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="214"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="215"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uQ7-1Q-A0f">
