@@ -120,10 +120,9 @@ class AccountTableViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        inputUserName = textField.text.flatMap { $0 + string }
-        return true
+    
+    @IBAction func textFieldDidChanage(_ sender: UITextField) {
+        inputUserName = sender.text
     }
     
     deinit {
