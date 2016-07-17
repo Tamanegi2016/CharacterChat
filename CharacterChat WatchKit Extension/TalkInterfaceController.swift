@@ -23,13 +23,17 @@ class TalkInterfaceController: WKInterfaceController, AVSpeechSynthesizerDelegat
     }
     
     private var object: SCNNode? {
-        return scene?.childNode(withName: "Plane", recursively: true)
+        return getNode(name: "Plane")
     }
     
     private var camera: SCNCamera? {
-        let cameraNode = scene?.childNode(withName: "Camera", recursively: true)
+        let cameraNode = getNode(name: "Camera")
         let camera = cameraNode?.camera
         return camera
+    }
+    
+    private func getNode(name: String) -> SCNNode? {
+        return scene?.childNode(withName: name, recursively: true)
     }
     
     override func awake(withContext context: AnyObject?) {
@@ -49,13 +53,22 @@ class TalkInterfaceController: WKInterfaceController, AVSpeechSynthesizerDelegat
     }
     
     private func setup() {
-//        let text = SCNText(string: "TEST", extrusionDepth: 0.0)
-//        let textNode = SCNNode(geometry: text)
-//        let x = Float(object?.position.x ?? 0)
-//        let y = Float(object?.position.y ?? 0)
-//        let z = Float(camera?.zNear ?? 0)
-//        textNode.position = SCNVector3Make(x, y, z)
-//        scene?.addChildNode(textNode)
+        let cameraNode = getNode(name: "Camera")
+        
+        let text = SCNText(string: "TEST", extrusionDepth: 0.0)
+        let textNode = SCNNode(geometry: text)
+        textNode.position = SCNVector3Make(
+            Float(cameraNode?.position.x ?? 0),
+            Float(cameraNode?.position.y ?? 0),
+            Float(camera?.zNear ?? 0)
+        )
+        textNode.eulerAngles = SCNVector3Make(
+            cameraNode?.eulerAngles.x ?? 0,
+            cameraNode?.eulerAngles.y ?? 0,
+            cameraNode?.eulerAngles.z ?? 0
+        )
+        
+        scene?.addChildNode(textNode)
     }
     
     private func run() {
