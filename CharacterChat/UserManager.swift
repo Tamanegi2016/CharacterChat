@@ -12,7 +12,7 @@ import Foundation
 
 class UserManager {
     // TODO:- 後で削除
-    let sampleProfileImage = URL(string: "https://pbs.twimg.com/profile_images/378800000220029324/fe66faeca20115da8566e51d83447ead_400x400.jpeg")!
+    static let sampleProfileImage = URL(string: "https://pbs.twimg.com/profile_images/378800000220029324/fe66faeca20115da8566e51d83447ead_400x400.jpeg")!
     
     struct Notif {
         static let willLogin = NSNotification.Name(rawValue: "willLogin")
@@ -30,7 +30,35 @@ class UserManager {
     
     private(set) var own: User?
     private(set) var frineds    = [User]()
-    private(set) var chatLookup = [Chat]()
+    private(set) var chatLookup = [
+        Chat(
+            friend: User(identifier: "", name: "ユーザー1", profileImage: sampleProfileImage),
+            message:
+            [
+                Message(identifier: "", type: .own, content: "こんにちわ1", createdAt: Date(timeIntervalSinceNow: -10)),
+                Message(identifier: "", type: .own, content: "こんにちわ2", createdAt: Date(timeIntervalSinceNow: -5)),
+                Message(identifier: "", type: .own, content: "こんにちわ3", createdAt: Date())
+            ]
+        ),
+        Chat(
+            friend: User(identifier: "", name: "ユーザー2", profileImage: sampleProfileImage),
+            message:
+            [
+                Message(identifier: "", type: .own, content: "おはよう1", createdAt: Date(timeIntervalSinceNow: -10)),
+                Message(identifier: "", type: .own, content: "おはよう2", createdAt: Date(timeIntervalSinceNow: -5)),
+                Message(identifier: "", type: .own, content: "おはよう3", createdAt: Date())
+            ]
+        ),
+        Chat(
+            friend: User(identifier: "", name: "ユーザー3", profileImage: sampleProfileImage),
+            message:
+            [
+                Message(identifier: "", type: .own, content: "こんばんわ1", createdAt: Date(timeIntervalSinceNow: -10)),
+                Message(identifier: "", type: .own, content: "こんばんわ2", createdAt: Date(timeIntervalSinceNow: -5)),
+                Message(identifier: "", type: .own, content: "こんばんわ3", createdAt: Date())
+            ]
+        )
+    ]
     
     func login(with userName: String) {
         
@@ -51,7 +79,7 @@ class UserManager {
         
         let mock: [Chat] = [
             Chat(
-                friend: User(identifier: "", name: "ユーザー1", profileImage: sampleProfileImage),
+                friend: User(identifier: "", name: "ユーザー1", profileImage: UserManager.sampleProfileImage),
                 message:
                 [
                     Message(identifier: "", type: .own, content: "こんにちわ1", createdAt: Date(timeIntervalSinceNow: -10)),
@@ -60,7 +88,7 @@ class UserManager {
                 ]
             ),
             Chat(
-                friend: User(identifier: "", name: "ユーザー2", profileImage: sampleProfileImage),
+                friend: User(identifier: "", name: "ユーザー2", profileImage: UserManager.sampleProfileImage),
                 message:
                 [
                     Message(identifier: "", type: .own, content: "おはよう1", createdAt: Date(timeIntervalSinceNow: -10)),
@@ -69,7 +97,7 @@ class UserManager {
                 ]
             ),
             Chat(
-                friend: User(identifier: "", name: "ユーザー3", profileImage: sampleProfileImage),
+                friend: User(identifier: "", name: "ユーザー3", profileImage: UserManager.sampleProfileImage),
                 message:
                 [
                     Message(identifier: "", type: .own, content: "こんばんわ1", createdAt: Date(timeIntervalSinceNow: -10)),

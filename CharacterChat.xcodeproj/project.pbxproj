@@ -31,6 +31,10 @@
 		2BEAD8921D3A343300CEC543 /* UserLookupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAD8911D3A343300CEC543 /* UserLookupService.swift */; };
 		8036D4F61D3A0ECB0017C990 /* TalkInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8036D4F51D3A0ECB0017C990 /* TalkInterfaceController.swift */; };
 		8036D4F81D3A0F0B0017C990 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 8036D4F71D3A0F0B0017C990 /* art.scnassets */; };
+		804709461D3B37D7009DB1D4 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804709451D3B37D7009DB1D4 /* Converter.swift */; };
+		804709471D3B37E1009DB1D4 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804709451D3B37D7009DB1D4 /* Converter.swift */; };
+		805862941D3B55FE002F6DC9 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805862931D3B55FE002F6DC9 /* WatchConnectivityManager.swift */; };
+		805862971D3B5C01002F6DC9 /* SpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805862961D3B5C01002F6DC9 /* SpeechSynthesizer.swift */; };
 		805ACA321D39B73300B76443 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805ACA311D39B73300B76443 /* AppDelegate.swift */; };
 		805ACA341D39B73300B76443 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805ACA331D39B73300B76443 /* ViewController.swift */; };
 		805ACA371D39B73300B76443 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 805ACA351D39B73300B76443 /* Main.storyboard */; };
@@ -42,11 +46,14 @@
 		805ACA5D1D39B73300B76443 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 805ACA5B1D39B73300B76443 /* Interface.storyboard */; };
 		805ACA5F1D39B73300B76443 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 805ACA5E1D39B73300B76443 /* Assets.xcassets */; };
 		805ACA661D39B73300B76443 /* CharacterChat WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 805ACA651D39B73300B76443 /* CharacterChat WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		805ACA6D1D39B73300B76443 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805ACA6C1D39B73300B76443 /* InterfaceController.swift */; };
 		805ACA6F1D39B73300B76443 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805ACA6E1D39B73300B76443 /* ExtensionDelegate.swift */; };
 		805ACA711D39B73300B76443 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805ACA701D39B73300B76443 /* NotificationController.swift */; };
 		805ACA731D39B73300B76443 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 805ACA721D39B73300B76443 /* Assets.xcassets */; };
 		805ACA8B1D39BA6B00B76443 /* MessageListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805ACA8A1D39BA6B00B76443 /* MessageListRow.swift */; };
+		80CFF3541D3B2AF00002D8C8 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAD8851D3A217200CEC543 /* Chat.swift */; };
+		80CFF3551D3B2AFD0002D8C8 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAD8831D3A216200CEC543 /* Message.swift */; };
+		80CFF3561D3B2B080002D8C8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAD8811D3A214B00CEC543 /* User.swift */; };
+		80DD80DE1D3B60A5002180FA /* TalkListInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DD80DD1D3B60A5002180FA /* TalkListInterfaceController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +137,9 @@
 		2BEAD8911D3A343300CEC543 /* UserLookupService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLookupService.swift; sourceTree = "<group>"; };
 		8036D4F51D3A0ECB0017C990 /* TalkInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TalkInterfaceController.swift; sourceTree = "<group>"; };
 		8036D4F71D3A0F0B0017C990 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		804709451D3B37D7009DB1D4 /* Converter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
+		805862931D3B55FE002F6DC9 /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
+		805862961D3B5C01002F6DC9 /* SpeechSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizer.swift; sourceTree = "<group>"; };
 		805ACA2E1D39B73300B76443 /* CharacterChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CharacterChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		805ACA311D39B73300B76443 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		805ACA331D39B73300B76443 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -149,12 +159,12 @@
 		805ACA601D39B73300B76443 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		805ACA651D39B73300B76443 /* CharacterChat WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "CharacterChat WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		805ACA6B1D39B73300B76443 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		805ACA6C1D39B73300B76443 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		805ACA6E1D39B73300B76443 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		805ACA701D39B73300B76443 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		805ACA721D39B73300B76443 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		805ACA741D39B73300B76443 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		805ACA8A1D39BA6B00B76443 /* MessageListRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageListRow.swift; sourceTree = "<group>"; };
+		80DD80DD1D3B60A5002180FA /* TalkListInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TalkListInterfaceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,9 +216,26 @@
 			isa = PBXGroup;
 			children = (
 				8036D4F51D3A0ECB0017C990 /* TalkInterfaceController.swift */,
-				805ACA6C1D39B73300B76443 /* InterfaceController.swift */,
+				80DD80DD1D3B60A5002180FA /* TalkListInterfaceController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		804709441D3B37C2009DB1D4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				804709451D3B37D7009DB1D4 /* Converter.swift */,
+				805862931D3B55FE002F6DC9 /* WatchConnectivityManager.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		805862951D3B5BEF002F6DC9 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				805862961D3B5C01002F6DC9 /* SpeechSynthesizer.swift */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 		805ACA251D39B73300B76443 = {
@@ -296,6 +323,8 @@
 		805ACA691D39B73300B76443 /* CharacterChat WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				805862951D3B5BEF002F6DC9 /* Util */,
+				804709441D3B37C2009DB1D4 /* Model */,
 				8036D4F41D3A0EBE0017C990 /* Controller */,
 				805ACA881D39BA3200B76443 /* View */,
 				805ACA6E1D39B73300B76443 /* ExtensionDelegate.swift */,
@@ -544,6 +573,7 @@
 				2BEAD8921D3A343300CEC543 /* UserLookupService.swift in Sources */,
 				2BC0C5771D39D90C00396CC3 /* ChatDetailContainerViewController.swift in Sources */,
 				805ACA341D39B73300B76443 /* ViewController.swift in Sources */,
+				804709471D3B37E1009DB1D4 /* Converter.swift in Sources */,
 				2BC0C56F1D39CE3500396CC3 /* FriendTableViewController.swift in Sources */,
 				2BA9627B1D3A03C1009EDD5F /* AccountTableViewController.swift in Sources */,
 				2BC0C5731D39D3A600396CC3 /* ChatDetailTableViewController.swift in Sources */,
@@ -588,10 +618,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8036D4F61D3A0ECB0017C990 /* TalkInterfaceController.swift in Sources */,
+				80CFF3541D3B2AF00002D8C8 /* Chat.swift in Sources */,
 				805ACA8B1D39BA6B00B76443 /* MessageListRow.swift in Sources */,
 				805ACA711D39B73300B76443 /* NotificationController.swift in Sources */,
+				805862971D3B5C01002F6DC9 /* SpeechSynthesizer.swift in Sources */,
+				805862941D3B55FE002F6DC9 /* WatchConnectivityManager.swift in Sources */,
+				804709461D3B37D7009DB1D4 /* Converter.swift in Sources */,
+				80CFF3561D3B2B080002D8C8 /* User.swift in Sources */,
 				805ACA6F1D39B73300B76443 /* ExtensionDelegate.swift in Sources */,
-				805ACA6D1D39B73300B76443 /* InterfaceController.swift in Sources */,
+				80CFF3551D3B2AFD0002D8C8 /* Message.swift in Sources */,
+				80DD80DE1D3B60A5002180FA /* TalkListInterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

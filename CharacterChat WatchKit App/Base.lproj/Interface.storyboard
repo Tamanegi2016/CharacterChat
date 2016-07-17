@@ -5,35 +5,40 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11064"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Talk List Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="CharacterChat_WatchKit_App" customModuleProvider="target">
+                <controller id="AgC-eL-Hgc" customClass="TalkListInterfaceController" customModule="CharacterChat_WatchKit_Extension">
                     <items>
                         <table alignment="left" id="CkC-6l-UJM">
                             <items>
                                 <tableRow identifier="MessageListRow" id="n0y-zi-ple" customClass="MessageListRow" customModule="CharacterChat_WatchKit_Extension">
-                                    <group key="rootItem" width="1" height="0.0" alignment="left" spacing="5" id="l3z-yg-tdk">
+                                    <group key="rootItem" width="1" height="50" alignment="left" spacing="5" id="l3z-yg-tdk">
                                         <items>
-                                            <imageView width="38" height="41" alignment="left" image="Mii" contentMode="scaleAspectFit" id="qmG-jW-Sws"/>
+                                            <imageView width="38" height="41" alignment="left" contentMode="scaleAspectFit" id="qmG-jW-Sws"/>
                                             <group width="1" alignment="left" layout="vertical" id="3DW-Vu-aFe">
                                                 <items>
-                                                    <label alignment="left" text="ありさ" id="Rct-Gv-17h">
+                                                    <label alignment="left" text="name" id="Rct-Gv-17h">
                                                         <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                                                     </label>
-                                                    <label alignment="left" text="おはよー" id="6Hg-8j-QO9">
+                                                    <label alignment="left" text="message" id="6Hg-8j-QO9">
                                                         <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
                                                     </label>
                                                 </items>
                                             </group>
                                         </items>
                                     </group>
+                                    <connections>
+                                        <outlet property="image" destination="qmG-jW-Sws" id="Q9F-VD-8Eb"/>
+                                        <outlet property="message" destination="6Hg-8j-QO9" id="6ZH-vF-4le"/>
+                                        <outlet property="name" destination="Rct-Gv-17h" id="luc-Mh-lNv"/>
+                                    </connections>
                                 </tableRow>
                             </items>
                         </table>
                     </items>
                     <connections>
-                        <outlet property="table" destination="CkC-6l-UJM" id="lhl-VQ-D3g"/>
+                        <outlet property="table" destination="CkC-6l-UJM" id="1Zu-ju-Lx6"/>
                     </connections>
                 </controller>
             </objects>

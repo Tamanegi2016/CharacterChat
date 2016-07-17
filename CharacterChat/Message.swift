@@ -9,9 +9,18 @@
 import Foundation
 
 struct Message {
-    enum MessageType {
-        case own
-        case friend
+    enum MessageType: String {
+        case own = "own"
+        case friend = "friend"
+        
+        /** watchでの復元用 */
+        init?(with str: String) {
+            switch str {
+            case MessageType.own.rawValue: self = .own
+            case MessageType.friend.rawValue: self = .friend
+            default: return  nil
+            }
+        }
     }
     
     let identifier: String

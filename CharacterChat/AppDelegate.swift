@@ -44,13 +44,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     private func startSession() {
         guard WCSession.isSupported() else { return }
-        watchSession.delegate = self
         watchSession.activate()
+        watchSession.delegate = self
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
-        let ary = UserManager.sharedInstance.chatLookup as NSArray
-        replyHandler(["result": ary.copy()])
+        message.forEach { (key, value) in
+            switch key {
+            case "get":
+                let chats = UserManager.sharedInstance.chatLookup
+                let ary = Converter.encode(with: chats)
+                replyHandler(["result": ary])
+            case "post":
+                break
+            default: break
+            }
+        }
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: NSError?) {

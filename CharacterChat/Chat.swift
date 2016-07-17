@@ -16,4 +16,8 @@ class Chat {
         self.friend = friend
         self.message = message
     }
+    
+    var friendLastMessage: String? {
+        return message.filter{ $0.type == .friend }.last?.content
+    }
 }
