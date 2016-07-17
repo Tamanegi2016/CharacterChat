@@ -20,7 +20,17 @@ class AccountTableViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        profileImageView.layer.cornerRadius = 50
+        
         nameLabel.text = UserManager.sharedInstance.own?.name
+        ImageLoadManager.sharedInstance.load(with: UserManager.sharedInstance.own?.profileImage) { [weak self] (result) in
+            switch result {
+            case .success(let data):
+                self?.profileImageView?.image = UIImage(data: data)
+            case .failure(_):
+                break
+            }
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(AccountTableViewController.keyboardDidShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AccountTableViewController.keyboardDidHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
@@ -33,8 +43,14 @@ class AccountTableViewController: UIViewController, UITextFieldDelegate {
         
         NotificationCenter.default.addObserver(forName: UserManager.Notif.didLogin, object: nil, queue: OperationQueue.main) { [weak self] (notif) in
             self?.nameLabel.text = UserManager.sharedInstance.own?.name
-            self?.nameLabel.text = "ゲスト"
-            self?.profileImageView?.image = UIImage(named: "NoProfile")
+            ImageLoadManager.sharedInstance.load(with: UserManager.sharedInstance.own?.profileImage) { [weak self] (result) in
+                switch result {
+                case .success(let data):
+                    self?.profileImageView?.image = UIImage(data: data)
+                case .failure(_):
+                    break
+                }
+            }
         }
 
     }

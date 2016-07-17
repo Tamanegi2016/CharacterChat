@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         startSession()
+        UserManager.sharedInstance.login(with: "test_user2")
         return true
     }
     
