@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8036D4F61D3A0ECB0017C990 /* TalkInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8036D4F51D3A0ECB0017C990 /* TalkInterfaceController.swift */; };
-		8036D4F81D3A0F0B0017C990 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 8036D4F71D3A0F0B0017C990 /* art.scnassets */; };
+		2B467E4F1D3B14190041D106 /* ImageLoadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B467E4E1D3B14190041D106 /* ImageLoadManager.swift */; };
 		2B7AC5B91D39C99100FFBFC9 /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7AC5B81D39C99100FFBFC9 /* ChatTableViewController.swift */; };
 		2B7AC5BD1D39CBA100FFBFC9 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7AC5BC1D39CBA100FFBFC9 /* ChatTableViewCell.swift */; };
 		2BA9627B1D3A03C1009EDD5F /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA9627A1D3A03C1009EDD5F /* AccountTableViewController.swift */; };
@@ -26,6 +25,8 @@
 		2BEAD88E1D3A2FFA00CEC543 /* FriendRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAD88D1D3A2FFA00CEC543 /* FriendRegistrationViewController.swift */; };
 		2BEAD8901D3A32F300CEC543 /* FriendRegistrationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAD88F1D3A32F300CEC543 /* FriendRegistrationTableViewCell.swift */; };
 		2BEAD8921D3A343300CEC543 /* UserLookupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEAD8911D3A343300CEC543 /* UserLookupService.swift */; };
+		8036D4F61D3A0ECB0017C990 /* TalkInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8036D4F51D3A0ECB0017C990 /* TalkInterfaceController.swift */; };
+		8036D4F81D3A0F0B0017C990 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 8036D4F71D3A0F0B0017C990 /* art.scnassets */; };
 		805ACA321D39B73300B76443 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805ACA311D39B73300B76443 /* AppDelegate.swift */; };
 		805ACA341D39B73300B76443 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805ACA331D39B73300B76443 /* ViewController.swift */; };
 		805ACA371D39B73300B76443 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 805ACA351D39B73300B76443 /* Main.storyboard */; };
@@ -101,8 +102,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8036D4F51D3A0ECB0017C990 /* TalkInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TalkInterfaceController.swift; sourceTree = "<group>"; };
-		8036D4F71D3A0F0B0017C990 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		2B467E4E1D3B14190041D106 /* ImageLoadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoadManager.swift; sourceTree = "<group>"; };
 		2B7AC5B81D39C99100FFBFC9 /* ChatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
 		2B7AC5BC1D39CBA100FFBFC9 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		2BA9627A1D3A03C1009EDD5F /* AccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +120,8 @@
 		2BEAD88D1D3A2FFA00CEC543 /* FriendRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendRegistrationViewController.swift; sourceTree = "<group>"; };
 		2BEAD88F1D3A32F300CEC543 /* FriendRegistrationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendRegistrationTableViewCell.swift; sourceTree = "<group>"; };
 		2BEAD8911D3A343300CEC543 /* UserLookupService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLookupService.swift; sourceTree = "<group>"; };
+		8036D4F51D3A0ECB0017C990 /* TalkInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TalkInterfaceController.swift; sourceTree = "<group>"; };
+		8036D4F71D3A0F0B0017C990 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		805ACA2E1D39B73300B76443 /* CharacterChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CharacterChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		805ACA311D39B73300B76443 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		805ACA331D39B73300B76443 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -179,15 +181,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-        8036D4F41D3A0EBE0017C990 /* Controller */ = {
-            isa = PBXGroup;
-            children = (
-                8036D4F51D3A0ECB0017C990 /* TalkInterfaceController.swift */,
-                805ACA6C1D39B73300B76443 /* InterfaceController.swift */,
-            );
-            name = Controller;
-            sourceTree = "<group>";
-        };
 		2BEAD8801D3A213500CEC543 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +192,15 @@
 				2BEAD8911D3A343300CEC543 /* UserLookupService.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		8036D4F41D3A0EBE0017C990 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8036D4F51D3A0ECB0017C990 /* TalkInterfaceController.swift */,
+				805ACA6C1D39B73300B76443 /* InterfaceController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		805ACA251D39B73300B76443 = {
@@ -243,6 +245,7 @@
 				2BC0C5721D39D3A600396CC3 /* ChatDetailTableViewController.swift */,
 				2BC0C5741D39D3BB00396CC3 /* ChatDetailTableViewCell.swift */,
 				2BC0C5781D39E01300396CC3 /* ChatDetailTableRightViewCell.swift */,
+				2B467E4E1D3B14190041D106 /* ImageLoadManager.swift */,
 				805ACA381D39B73300B76443 /* Assets.xcassets */,
 				805ACA3A1D39B73300B76443 /* LaunchScreen.storyboard */,
 				805ACA3D1D39B73300B76443 /* Info.plist */,
@@ -544,6 +547,7 @@
 				2BC0C5791D39E01300396CC3 /* ChatDetailTableRightViewCell.swift in Sources */,
 				2BC0C5751D39D3BB00396CC3 /* ChatDetailTableViewCell.swift in Sources */,
 				2B7AC5BD1D39CBA100FFBFC9 /* ChatTableViewCell.swift in Sources */,
+				2B467E4F1D3B14190041D106 /* ImageLoadManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

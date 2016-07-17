@@ -10,8 +10,8 @@ import Foundation
 
 struct Message {
     enum MessageType {
-        case Own
-        case Friend
+        case own
+        case friend
     }
     
     let identifier: String

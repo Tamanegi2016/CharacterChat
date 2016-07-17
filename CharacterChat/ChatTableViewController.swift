@@ -41,12 +41,21 @@ class ChatTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return chats.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatTableViewCell", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatTableViewCell", for: indexPath) as! ChatTableViewCell
+        cell.messageSummaryLabel.text = chats[indexPath.row].message.first?.content
+        cell.nameLabel.text = chats[indexPath.row].friend.name
+        ImageLoadManager.sharedInstance.load(with: chats[indexPath.row].friend.profileImage) { (result) in
+            switch result {
+            case .success(let data):
+                cell.profileImageView.image = UIImage(data: data)
+            case .failure(_):
+                break
+            }
+        }
 
         return cell
     }
