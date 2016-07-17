@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2B467E4F1D3B14190041D106 /* ImageLoadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B467E4E1D3B14190041D106 /* ImageLoadManager.swift */; };
+		2B467E521D3B185D0041D106 /* CharacterSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B467E511D3B185D0041D106 /* CharacterSelectViewController.swift */; };
+		2B467E541D3B18BF0041D106 /* CharacterPartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B467E531D3B18BF0041D106 /* CharacterPartsViewController.swift */; };
+		2B467E561D3B198A0041D106 /* CharacterPartsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B467E551D3B198A0041D106 /* CharacterPartsViewCell.swift */; };
+		2B467E581D3B1A680041D106 /* CharacterPartsSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B467E571D3B1A680041D106 /* CharacterPartsSelectViewController.swift */; };
 		2B7AC5B91D39C99100FFBFC9 /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7AC5B81D39C99100FFBFC9 /* ChatTableViewController.swift */; };
 		2B7AC5BD1D39CBA100FFBFC9 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7AC5BC1D39CBA100FFBFC9 /* ChatTableViewCell.swift */; };
 		2BA9627B1D3A03C1009EDD5F /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA9627A1D3A03C1009EDD5F /* AccountTableViewController.swift */; };
@@ -103,6 +107,10 @@
 
 /* Begin PBXFileReference section */
 		2B467E4E1D3B14190041D106 /* ImageLoadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoadManager.swift; sourceTree = "<group>"; };
+		2B467E511D3B185D0041D106 /* CharacterSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSelectViewController.swift; sourceTree = "<group>"; };
+		2B467E531D3B18BF0041D106 /* CharacterPartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterPartsViewController.swift; sourceTree = "<group>"; };
+		2B467E551D3B198A0041D106 /* CharacterPartsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterPartsViewCell.swift; sourceTree = "<group>"; };
+		2B467E571D3B1A680041D106 /* CharacterPartsSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterPartsSelectViewController.swift; sourceTree = "<group>"; };
 		2B7AC5B81D39C99100FFBFC9 /* ChatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
 		2B7AC5BC1D39CBA100FFBFC9 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		2BA9627A1D3A03C1009EDD5F /* AccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
@@ -246,6 +254,10 @@
 				2BC0C5741D39D3BB00396CC3 /* ChatDetailTableViewCell.swift */,
 				2BC0C5781D39E01300396CC3 /* ChatDetailTableRightViewCell.swift */,
 				2B467E4E1D3B14190041D106 /* ImageLoadManager.swift */,
+				2B467E511D3B185D0041D106 /* CharacterSelectViewController.swift */,
+				2B467E531D3B18BF0041D106 /* CharacterPartsViewController.swift */,
+				2B467E551D3B198A0041D106 /* CharacterPartsViewCell.swift */,
+				2B467E571D3B1A680041D106 /* CharacterPartsSelectViewController.swift */,
 				805ACA381D39B73300B76443 /* Assets.xcassets */,
 				805ACA3A1D39B73300B76443 /* LaunchScreen.storyboard */,
 				805ACA3D1D39B73300B76443 /* Info.plist */,
@@ -535,8 +547,12 @@
 				2BC0C56F1D39CE3500396CC3 /* FriendTableViewController.swift in Sources */,
 				2BA9627B1D3A03C1009EDD5F /* AccountTableViewController.swift in Sources */,
 				2BC0C5731D39D3A600396CC3 /* ChatDetailTableViewController.swift in Sources */,
+				2B467E541D3B18BF0041D106 /* CharacterPartsViewController.swift in Sources */,
+				2B467E561D3B198A0041D106 /* CharacterPartsViewCell.swift in Sources */,
+				2B467E581D3B1A680041D106 /* CharacterPartsSelectViewController.swift in Sources */,
 				2B7AC5B91D39C99100FFBFC9 /* ChatTableViewController.swift in Sources */,
 				2BEAD88C1D3A274000CEC543 /* Result.swift in Sources */,
+				2B467E521D3B185D0041D106 /* CharacterSelectViewController.swift in Sources */,
 				2BC0C5711D39CE4400396CC3 /* FriendTableViewCell.swift in Sources */,
 				2BEAD88E1D3A2FFA00CEC543 /* FriendRegistrationViewController.swift in Sources */,
 				805ACA321D39B73300B76443 /* AppDelegate.swift in Sources */,

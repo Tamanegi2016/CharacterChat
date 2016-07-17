@@ -12,9 +12,24 @@ class FriendTableViewController: UITableViewController, FriendRegistrationViewCo
 
     var friends = [User]()
     
+    lazy var presentCharacterSelectView: (() -> Void)? = {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CharacterSelectViewController")
+        vc?.modalTransitionStyle = .crossDissolve
+        self.present(vc!, animated: true) {
+            UserDefaults.standard.set(true, forKey: "alreadySelectFriend")
+            UserDefaults.standard.synchronize()
+        }
+        self.presentCharacterSelectView = nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let alreadySelectFriend = UserDefaults.standard.bool(forKey: "alreadySelectFriend")
+        if alreadySelectFriend {
+            presentCharacterSelectView = nil
+        }
+        
         NotificationCenter.default.addObserver(forName: UserManager.Notif.didLogout, object: nil, queue: OperationQueue.main) { [weak self] (notif) in
             self?.fetch()
         }
@@ -31,6 +46,11 @@ class FriendTableViewController: UITableViewController, FriendRegistrationViewCo
         self.refreshControl = refreshControl
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presentCharacterSelectView?()
+    }
+    
     func didRefresh(_ sender: UIRefreshControl) {
         sender.endRefreshing()
         fetch()
